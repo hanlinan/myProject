@@ -27,11 +27,8 @@ $(document).ready(function() {
                                 self.provList = res.data[i];
                                 break;
                             }
-                            // // self.createMark(self.NearbyShopList)
-                            // console.log(self.provList);
                         }, (err) => {
                           console.log(err);
-                          // alert("网络繁忙");
                         });
                     },
                     getCity(event){
@@ -39,7 +36,6 @@ $(document).ready(function() {
                         this.store = '选择门店';
                         this.cityList = [];
                         this.storeStore = [];
-                        // $('.city').find('option')[0].prop('selectd',true)
                         let self = this;
                         for (var i in this.provList) {
                             var obj = this.provList[i];
