@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+	<link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/index.css">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app3">
+		<div id="app">
+			<div class="r1">
+				<select class="prov" se="prov" id="prov" name="select-prov" @change="getCity($event)">
+		            <option>市</option>
+	                <option value="鞍山">鞍山</option>
+	                <option value="北京">北京</option>
+	                <option value="长春">长春</option>
+	                <option value="长沙">长沙</option>
+	                <option value="常熟">常熟</option>
+	                <option value="常州">常州</option>
+	                <option value="成都">成都</option>
+	                <option value="崇州">崇州</option>
+	                <option value="大连">大连</option>
+	                <option value="丹东">丹东</option>
+	                <option value="德阳">德阳</option>
+	                <option value="东莞">东莞</option>
+	                <option value="都江堰">都江堰</option>
+	                <option value="佛山">佛山</option>
+	                <option value="福州">福州</option>
+	                <option value="广州">广州</option>
+	                <option value="哈尔滨">哈尔滨</option>
+	                <option value="邯郸">邯郸</option>
+	                <option value="杭州">杭州</option>
+	                <option value="合肥">合肥</option>
+	                <option value="衡水">衡水</option>
+	                <option value="昆明">昆明</option>
+	                <option value="昆山">昆山</option>
+	                <option value="兰州">兰州</option>
+	                <option value="乐山">乐山</option>
+	                <option value="泸州">泸州</option>
+	                <option value="眉山">眉山</option>
+	                <option value="绵阳">绵阳</option>
+	                <option value="南昌">南昌</option>
+	                <option value="南充">南充</option>
+	                <option value="南京">南京</option>
+	                <option value="南宁">南宁</option>
+	                <option value="宁波">宁波</option>
+	                <option value="青岛">青岛</option>
+	                <option value="上海">上海</option>
+	                <option value="深圳">深圳</option>
+	                <option value="沈阳">沈阳</option>
+	                <option value="石家庄">石家庄</option>
+	                <option value="苏州">苏州</option>
+	                <option value="太原">太原</option>
+	                <option value="天津">天津</option>
+	                <option value="桐乡">桐乡</option>
+	                <option value="温州">温州</option>
+	                <option value="无锡">无锡</option>
+	                <option value="武汉">武汉</option>
+	                <option value="西安">西安</option>
+	                <option value="西昌">西昌</option>
+	                <option value="厦门">厦门</option>
+	                <option value="徐州">徐州</option>
+	                <option value="扬州">扬州</option>
+	                <option value="宜宾">宜宾</option>
+	                <option value="郑州">郑州</option>
+	                <option value="中山">中山</option>
+	                <option value="重庆">重庆</option>
+	                <option value="珠海">珠海</option>
+	            </select>
+
+		        </select>
+				<select  class="city" se="city" id="city"  name="select-city" @change="getCityAndArea($event)" >
+		            <option>区</option>
+		            <option :value="item" v-for="item in cityList">{{ item }}</option>
+		        </select>
+			</div>
+			<div class="r2">
+				<select  class="dist" se="dist" id="dist" name="select-dist" @change="updateMap($event)" > 
+		            <option>所有眼镜店</option>
+		            <option :value="item.StoreName" :data-lng="item.Longitude" :data-lat="item.Latitude" v-for="item in cityAndArea">{{ item.StoreName }}</option>
+		            
+
+		        </select>
+			</div>
+			<div class="r3">
+				<div>
+					<input type="text" placeholder="*输入眼镜店搜索">
+					<span>搜索
+						<img src="https://bdactivity.oss-cn-hangzhou.aliyuncs.com/publicImg/search.png" alt=""></span>
+				</div>
+			</div>
+		</div>
+		<div class="r4" id="allmap">
+			
+		</div>
+		<img class="mark" src="http://myacuvuewechat.51i.cc/Content/images/color.jpg" alt="">
+		<div class="store" id="app">
+			<div class="storeList" v-for="item in NearbyShopList" 
+			@click="openLocation(item.Latitude,item.Longitude,item.StoreName,item.Addr)">
+				<img :src="'http://myacuvuewechat.51i.cc/Content/images/map-'+ item.StoreRank +'.jpg'" alt="">
+				<ul>
+					<li class="text-color">
+						{{ item.StoreName }}
+					</li>
+					<li>
+						{{ item.Addr }}
+					</li>
+					<li>
+						{{ item.TelD2 }}
+					</li>
+				</ul>
+				<img src="http://myacuvuewechat.51i.cc/Content/images/dot.jpg" alt="" >
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://api.map.baidu.com/getscript?v=2.0&ak=Bdv6Lcxatvj3OrNjveRUuksCGwhZcUKm&services=&t=20180427194914"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+	<script src='js/public.js'></script>
+	<script src="js/selectCity.js"></script>
+	<script>
+		//
+			// var lng = 116.404;
+			// var lat = 39.915;
+			// // 百度地图API功能
+			// var map = new BMap.Map("allmap");    // 创建Map实例
+			// map.centerAndZoom(new BMap.Point(lng, lat), 15);  // 初始化地图,设置中心点坐标和地图级别
+			// //添加地图类型控件
+			// map.addControl(new BMap.MapTypeControl({
+			// 	mapTypes:[
+		 //            BMAP_NORMAL_MAP,
+		 //            BMAP_HYBRID_MAP
+		 //        ]}));	  
+			// map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+			// map.enableScrollWheelZoom(true);
+			// var geolocation = new BMap.Geolocation();
+		 //    geolocation.getCurrentPosition(function(r){
+		 //        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+		 //            var mk = new BMap.Marker(r.point);
+		 //            lng = r.point.lng;
+		 //            lat = r.point.lat;
+		 //            loadNearStore(lng,lat);
+		 //            map.addOverlay(mk);
+		 //            map.panTo(r.point);
+		 //        }
+		 //        else {
+		 //            alert('failed'+this.getStatus());
+		 //        }
+		 //    },{enableHighAccuracy: true})
+	        
+
+	        /**/
+	        function loadNearStore(lng,lat){
+	        	// console.log(lng+''+lat);
+	        }
+	        window.load = function(){
+	        	
+	        }
+        new Vue({
+        	el:'#app2',
+        	data () {
+				return {
+			      NearbyShopList : [],
+			      cityList : [],
+			      cityAndArea : []
+			    }
+		    },
+        	methods : {
+			    getCity(event){
+			    	console.log(event.target.value);
+			    	let self = this;  
+			    	axios.post('area.json',{
+			    		Area : event.target.value
+			    	}).then(function(res){
+			    		self.cityList = res.data.AreaList;
+			    		// self.createMark(self.NearbyShopList)
+			    		console.log(self.cityList);
+			    	}, (err) => {
+				      console.log(err)
+				    });
+			    },
+			    getCityAndArea(event){
+                    console.log(event.target.value);
+                    let self = this;  
+                    axios.post('cityArea.json',{
+                        Area : event.target.value
+                    }).then(function(res){
+                    	self.cityAndArea.length = 0;
+                    	for(var i = 0;i < res.data.NearbyShopList.length;i++){
+                    		console.log(res.data.NearbyShopList[i].StoreName);
+                    		self.cityAndArea.push (res.data.NearbyShopList[i].StoreName)
+                    	}
+                        console.log(self.cityAndArea);
+                    }, (err) => {
+                      console.log(err)
+                    });
+                }
+			    
+        	}
+
+        })
+		new Vue({
+			el: '#app3',  
+			data () {
+				return {
+			      center: {
+			      	lng:116.404, 
+			      	lat: 39.915
+			      },
+			      NearbyShopList : [],
+			      point : [],
+			      city : [],
+			      cityList : [],
+			      cityAndArea : []
+			    }
+		    },
+		    methods : {
+
+        		initMap () {
+			        this.createMap() ; //创建地图 
+		        },
+		        createMap(){
+					var lng = 116.404;
+					var lat = 39.915;
+			        var map = new BMap.Map("allmap");    // 创建Map实例
+					map.centerAndZoom(new BMap.Point(lng, lat), 15);  // 初始化地图,设置中心点坐标和地图级别
+					//添加地图类型控件
+					map.addControl(new BMap.MapTypeControl({
+						mapTypes:[
+				            BMAP_NORMAL_MAP,
+				            BMAP_HYBRID_MAP
+				        ]}));	  
+					map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+					map.enableScrollWheelZoom(true);
+					var geolocation = new BMap.Geolocation();
+				    geolocation.getCurrentPosition(function(r){
+				        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+				            var mk = new BMap.Marker(r.point);
+				            lng = r.point.lng;
+				            lat = r.point.lat;
+				            // loadNearStore(lng,lat);
+				            map.addOverlay(mk);
+				            map.panTo(r.point);
+				        }
+				        else {
+				            alert('failed'+this.getStatus());
+				        }
+				    },{enableHighAccuracy: true})
+			        window.map = map;//将map变量存储在全局
+		        },
+			    createMark (nearbyShopList){
+					// 随机向地图添加标注
+					var bounds = map.getBounds();
+					var sw = bounds.getSouthWest();
+					var ne = bounds.getNorthEast();
+					for (let i = 0; i < nearbyShopList.length; i ++) {
+						var point = new BMap.Point(nearbyShopList[i].Longitude, nearbyShopList[i].Latitude);
+							var content = {
+								'storeName' : nearbyShopList[i].StoreName,
+								'storeAddt' : nearbyShopList[i].Addr,
+								'storeTell' : nearbyShopList[i].TelD2
+							};
+						// var markerArr = this.NearbyShopList;
+			    	      //   var json = markerArr[i];
+								// //这个地方加this
+						  //       var iw = this.createInfoWindow(i);
+						  //       //这个地方加this
+						  //       var _iw = this.createInfoWindow(i);
+						  //       var _marker = marker;
+								this.addMarker(point,content,i);
+								// iw.addEventListener("open",function(){
+						  //           _marker.getLabel().hide();
+						  //           console.log(2);
+						  //       })
+				        
+					}
+				},
+				addMarker(point,content,i){
+				    // 编写自定义函数,创建标注
+				    // var marker = new BMap.Marker(point);
+
+				    // map.addOverlay(marker);
+					//创建小狐狸
+					var myIcon = new BMap.Icon("http://myacuvuewechat.51i.cc/Content/images/dot.png", new BMap.Size(40,40));
+					var marker2 = new BMap.Marker(point,{icon:myIcon});  // 创建标注
+					map.addOverlay(marker2);      // 将标注添加到地图中
+					// console.log(point);
+					// this.addClickHandler(content,marker2);
+					// var content ="天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门...";
+					// console.log(content);
+					var contentList ="<b>"+ content.storeName+"</b></br></br>"+content.storeAddt+"</br></br>"+content.storeTell;
+					var infoWindow = new BMap.InfoWindow(contentList);  // 创建信息窗口对象
+					
+					marker2.addEventListener('click',function(){
+    					map.openInfoWindow(infoWindow,point); //开启信息窗口
+						// document.getElementById("r-result").innerHTML = infoWindow.getContent();
+				        	
+						
+					});
+				},
+				openLocation(Latitude, Longitude, StoreName, Addr) {
+					console.log(Latitude+':'+Longitude+':'+StoreName+':'+Addr);
+			        wx.openLocation({
+			            latitude: Latitude, // 纬度，浮点数，范围为90 ~ -90
+			            longitude: Longitude, // 经度，浮点数，范围为180 ~ -180。
+			            name: StoreName, // 位置名
+			            address: Addr, // 地址详情说明
+			            scale: 15, // 地图缩放级别,整形值,范围从1~28。默认为最大
+			            infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+			        });
+			    },
+			    openInfo(content,e){
+			    	var opts = {
+						width : 250,     // 信息窗口宽度
+						height: 80,     // 信息窗口高度
+						title : "" , // 信息窗口标题
+						enableMessage:true//设置允许信息窗发送短息
+				    };
+					var p = e.target;
+					var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+					var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+					map.openInfoWindow(infoWindow,point); //开启信息窗口
+				},
+				addClickHandler(content,marker){
+					// console.log(marker);
+					// console.log(content);
+					// marker.addEventListener("click",function(e){
+					// 	this.openInfo(content,e)}
+					// );
+					// marker.addEventListener('click',function(){
+	    			// 		alert();
+					// });
+				},
+				getCity(event){
+			    	console.log(event.target.value);
+			    	let self = this;  
+			    	axios.post('area.json',{
+			    		Area : event.target.value
+			    	}).then(function(res){
+			    		self.cityList = res.data.AreaList;
+			    		// self.createMark(self.NearbyShopList)
+			    		console.log(self.cityList);
+			    	}, (err) => {
+				      console.log(err)
+				    });
+			    },
+			    getCityAndArea(event){
+                    console.log(event.target.value);
+                    let self = this;  
+                    axios.post('cityArea.json',{
+                        Area : event.target.value
+                    }).then(function(res){
+                    	self.cityAndArea.length = 0;
+                    	for(var i = 0;i < res.data.NearbyShopList.length;i++){
+                    		console.log(res.data.NearbyShopList[i]);
+                    		self.cityAndArea.push (res.data.NearbyShopList[i])
+                    	}
+                        console.log(self.cityAndArea);
+                    }, (err) => {
+                      console.log(err)
+                    });
+                },
+                updateMap(event){
+                	console.log(event.target);
+                	console.log(event.target.getAttribute('data-lng'));
+                	console.log(event.target.getAttribute('data-lat'));
+                }
+
+		    },
+		    created :function(){
+		    	let self = this;  
+		    	axios.get('db.json',{
+		    		Longitude : this.center.lng,
+		    		Latitude :this.center.lat
+		    	}).then(function(res){
+		    		self.NearbyShopList = res.data.NearbyShopList;
+		    		self.createMark(self.NearbyShopList)
+		    		// console.log(self.NearbyShopList);
+		    	}, (err) => {
+			      console.log(err)
+			    });
+		    },
+		    mounted () {
+		      this.initMap()
+		    }
+
+		})
+var str = '注册成为【我的安视优】微信公众账号会员，构成您接受和承认以下条款（“条款”），此处条款可由强生视力健商贸（上海）有限公司（“强生”）随时修订，且是您和强生之间关于【我的安视优】的使用的约束性协议。如您不同意这些条款，请您立即注销【我的安视优】。'+
+
+            '<span style="font-size: 14px;font-weight: bold;"><br><br>用户信息</span><span>'+
+            
+                '<br><br>访问“我的安视优”，您需要提供一定的信息（包括以下定义的个人信息）以创建账户。您知晓并同意强生各公司及分支机构（“强生公司”）就经营和推广强生产品及服务、强生公司内部管理、强生产品及服务的数据分析和统计等目的（“目的”），收集、分享、处理、储存和使用您的个人信息，包括您的用户名、姓名、性别、出生日期、密码、年龄、邮寄地址、电子邮件地址、眼科检查信息和您提供的其他信息（“个人信息”）。您知晓您有权拒绝给予上述同意。'+
+
+                '<br><br>您知晓并同意，为实现上述目的，强生可能与代表强生公司履行职能（例如填写订单、处理付款、执行促销服务或数据管理）的代理商、经销商和/或服务提供商（“受托公司”）分享您的个人信息，而您的个人信息可能被该等受托公司处理、储存并使用。您确认并同意部分受托公司可能位于境外。您知晓您有权拒绝给予上述同意。'+
+
+                '<br><br>您注册为会员即表示同意并授权强生公司及受托公司：（1）通过信件、电子邮件和/或通过包括社交网络平台在内的其他数据形式的方式向您主动发送强生产品及服务相关推广、营销、知识教育信息或向您发起呼叫；（2）就实现“我的安视优”各项功能的合理需要及强生隐私政策所描述的目的处理、储存和使用您的个人信息。'+
+
+                '<br><br>您在“我的安视优”账户中发生的所有活动包括但不限于在线下单、积分兑换等行为在不违反法律法规的情况下应视为有效的行为，将对您产生约束力，强生公司有权据此要求您对该等行为负责。'+
+
+                '<br><br>强生公司将依照法律规定采取一定技术措施和其他必要措施确保您的个人信息安全。如您意识到或怀疑您的个人信息有未经任何授权的使用、篡改、访问、泄露或丢失的，您应立即在我的安视优微信公众账号通知强生公司。您理解并将对自己的用户名和密码的安全性和保密性负责，在适用法律允许的最大范围内，强生公司概不承担通过“我的安视优”获取、传输或存储的个人信息因未经授权的交易或欺诈性交易、用户自身保密不当或其他非强生公司原因而被盗窃、篡改、毁损、丢失所导致的任何损失。'+
+            '</span>'+
+            '<br><br>    <span style="font-size: 14px;font-weight: bold">可接受的使用<br><br></span>'+
+            '【我的安视优】和任何通过【我的安视优】连接传输的内容及个人信息仅限于设定功能的使用。您对【我的安视优】和任何内容的使用必须遵守此处条款和强生公司政策。任何情形下不允许按以下方式使用【我的安视优】<br>'+
+            '（1）袭击、滥用、追踪、威胁、诽谤或以其他方式侵犯或妨碍任何其他方的权利（包括但不限于宣传或其他所有权的权利）；<br>'+
+            '（2）非法、欺诈或欺骗；<br>'+
+            '（3）未经强生公司授权使用技术或其他方式访问【我的安视优】、强生网站或内容；<br>'+
+            '（4）使用或启动任何自动化系统，包括但不限于“机器人”、“网络爬虫”或“离线阅读器”访问【我的安视优】、强生网站或内容；<br>'+
+            '（5）试图引入病毒或其他计算机代码、文件或程序干扰、破坏或限制计算机软件、硬件或通讯设备的功能；<br>'+
+            '（6）试图获得未经授权访问强生公司的计算机网络或用户帐户；<br>'+
+            '（7）会鼓励刑事犯罪或引起民事责任的行为；<br>'+
+            '（8）违反此处条款；<br>'+
+            '（9）试图破坏、禁用、过载或损害强生公司的服务器或网络；<br>'+
+            '（10）未能遵守可适用的第三方条款（统称为“可接受的使用”）。强生公司如认为是或可能违反可接受的使用条款或强生公司的政策的，可自行决定，保留终止您的用户许可、终止您参与内容或使用【我的安视优】的权利，但强生未能或延迟采取此类措施不构成放弃其执行此处条款的权利。'+
+            '<br><br>    <span style="font-size: 14px;font-weight: bold">补偿<br><br></span>'+
+           ' 对因您使用或错误使用【我的安视优】违反此处条款或违反任何第三方的权利导致的任何及所有索赔、诉讼案、损害赔偿、费用、诉讼、罚款、刑罚、责任、费用（包括律师费），应强生公司的要求，您同意辩护、做出补偿及保证强生公司和其他关联公司、他们的员工、承包商、高级员工和董事免受损害。在需您合作采取有的辩护的事件中，除非已得到您的补偿，强生公司保留独家采取辩护及控制任何事情的权利。'+
+            '<br><br>    <span style="font-size: 14px;font-weight: bold">不保证<br><br></span>'+
+            '强生公司按“现状”向您提供【我的安视优】，您须自负使用风险。在可适用法律允许的全部范围内，强生公司否认所有明示或暗示的担保和条件，包括应用程序是适销的、质量令人满意的、可靠的、准确的、适合特定目的或需要的、非侵权或无缺陷或错误，或能在不间断基础上操作，或您使用【我的安视优】符合您所在地法律，或通过应用程序传输的个人信息是成功的、准确的或安全的。'+
+            '<br><br>    <span style="font-size: 14px;font-weight: bold">无责任<br><br></span>'+
+            '在可适用法律的全部范围内的任何情况下，强生公司及其附属公司<br>'+
+            '（1）对您使用【我的安视优】无责任；<br>'+
+            '（2）对您的任何直接的、间接的、特殊的、偶然的、间接性的或惩罚性的损害赔偿无责任，包括但不限于信誉损失、利润损失、个人信息丢失或被盗窃或被败坏、不能使用【我的安视优】，或设备失效，或功能失调的赔偿。您的唯一救济措施是停止使用【我的安视优】。在可适用法律的全部范围内的任何情况下（以适用法律允许的最大程度为限）对使用或不能使用【我的安视优】所产生的或与之有关的，无论是合同、侵权（包括过失）、严格责任或其他理论，强生公司和其母公司或其他关联公司的累计责任，赔偿金额不超过事件导致的该类责任产生前6个月内，您为访问或使用该应用程序付给强生公司的金额。'+
+            '<br><br>    <span style="font-size: 14px;font-weight: bold">标志、应用与内容<br><br></span>'+
+            '【我的安视优】中出现的强生、它的附属公司、强生标识、其他强生的商标、服务标记、图形和标识是强生的商标或注册商标（统称“强生标志”）。【我的安视优】中出现的其他商标、服务标记、图形以及标识是其各自所有者的商标（统称“第三方标志”）。未经强生公司或商标持有者事先书面允许，不得全部或部分复制、模仿或使用强生标志和第三方标志。【我的安视优】和内容受版权、商标、专利、商业秘密、国际条约、法律和其他专有权利的保护，同时拥有只由强生公司授权，或内容的其他所有者授权保护数字信息的安全组件。'+
+            '<br><br>    <span style="font-size: 14px;font-weight: bold">适用法律和司法管辖<br><br></span>'+
+            '此处条款适用中国的法律，不考虑法律冲突规则。因使用【我的安视优】或此处条款产生或涉及的任何法律行动，您不可撤销地同意中国法院的专属管辖权。'+
+            '<br><br>    <span style="font-size: 14px;font-weight: bold">变更<br><br></span>'+
+            '凡涉【我的安视优】的使用，强生公司保留随时变更或修改此处条款，或任何强生公司的政策，且可自行决定在强生公司的网站上发布修订版本的权利。变更或修改发布后继续使用【我的安视优】的，将构成接受这种变更或修改。'+
+            '<br><br>    <span style="font-size: 14px;font-weight: bold">可分性<br><br></span>'+
+            '此处条款中的任何规定被认定为非法、无效或因任何原因无法执行的，则该条款与此处其他条款可分割，且不影响其他条款的有效性和可执行性。'+
+            '<br><br>    <span style="font-size: 14px;font-weight: bold">联系强生公司<br><br></span>'+
+            '如有任何关于【我的安视优】的疑问、投诉可登陆<a href="http://www.acuvue.com.cn">www.acuvue.com.cn</a>联系我们'
+
+	</script>
+</body>
+</html>

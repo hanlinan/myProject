@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+	<link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+	<title>天才暖男作家—-张皓宸已上</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,
+		body{
+			width: 100%;
+			/*height: 100%;*/
+		}
+		body{
+			/*background-image: url(img/5.jpg);
+			background-repeat: no-repeat;
+			background-size: cover;*/
+			position: relative;
+			color: #fff;
+		}
+		.bg{
+			position: absolute;
+			z-index: -1;
+			width: 100%;
+		}
+		
+		div.form{
+			position: relative;
+			padding-left: 5%;
+			padding-right: 5%; 
+			padding-top: 2.75rem;
+		}
+		div.flower{
+			position: absolute;
+			bottom: 0.2rem;
+			left:0;
+		}
+		div.flower img{
+			width: 50%;
+		}
+		form{
+			background: #fff;
+			font-size: 0.3rem;
+			padding-left: 5%;
+			box-shadow: 2px 1px 7px 2px #b9b5b5;
+		}
+		div.check{
+			padding-top: 0.2rem;
+			/*padding-bottom: 0.1rem;*/
+			text-align: center;
+		}
+		div.sub{
+			padding-bottom: 0.2rem;
+		}
+		div.sub{
+			text-align: center;
+		}
+		div.check img,
+		div.sub img{
+			width: 50%;
+		}
+		div.r1{
+			line-height: 0.7rem;
+    		height: 0.7rem;
+    		margin-bottom: 0.1rem;
+		}
+		div.r1 span{
+			height: 0.7rem;
+		    width: 10%;
+		    display: inline-block;
+		    text-align: center;
+		}
+		div.r1 span img{
+			height: 70%;
+    		vertical-align: middle;
+		}
+		div.r1 input[type="text"]{
+			-webkit-appearance: none;   
+		}
+		div.r1 input,
+		div.r1 select{
+		    width: 75%;
+		    height: 0.6rem;
+		    padding-left: 0.2rem;
+		    background: #e8e8e8;
+		    border: 1px solid transparent;
+    		border-radius: 5px;
+    		box-shadow: 0 2px #c1bfbf;
+    		-webkit-box-shadow: 0 2px #c1bfbf;
+    		-moz-box-shadow: 0 2px #c1bfbf;
+    		outline: none;
+    		font-size: 0.24rem;
+
+		}
+		div.r1 select{
+			width: 79%;
+			-webkit-appearance: none;  
+		    -webkit-tap-highlight-color: #fff;  
+		    outline: 0;  
+
+		}
+		div.r1 img.product{
+			width: 100%;
+    		height: auto;
+		}
+		div.r1 {
+			width: 100%;
+    		height: auto;
+		}
+		div.r1 .checkbox input{
+			box-shadow: none;
+			height: 0.4rem;
+		}
+		div.r1 .checkbox{
+			height: 0.4rem;
+    		vertical-align: top;
+    		text-align: right;
+		}
+		div.checkbox1{
+			margin-bottom: 0;
+		}
+		div.checkbox2{
+			line-height: 1;
+			margin-bottom:0;
+		}
+		div.r1 p{
+			display: inline-block;
+			width: 80%;
+		    height: 0.6rem;
+		    /*padding-left: 0.2rem;*/
+		    color: #000;
+		    font-size: 0.22rem;
+		    line-height: 1.5;
+		    letter-spacing: 1px;
+		}
+		input:-moz-placeholder{
+			color: #000;
+		}
+		input::-webkit-input-placeholder{
+			color: #000;
+		}
+		input::-moz-placeholder{
+			color: #000;
+		}
+		input:-ms-input-placeholder{
+			color: #fff;
+		}
+		div.remLoadBeforeBg{
+			position: fixed;
+			background: #fff;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			top:0;
+		}
+	</style>
+</head>
+<body>
+	<img class="bg" src="http://lucky-draw.oss-cn-beijing.aliyuncs.com/bdimg/img/5.jpg" alt="">
+	<div class="form">
+		<form action=""  id="frmTrial" method="post">
+			<div class="check">
+				<a href="">
+					<img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/check.png" alt="">
+				</a>
+			</div>
+			<div class="r1">
+				<span><img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/user.png" alt=""></span>
+				<input type="text" placeholder="填写姓名" name="username">
+			</div>
+			<div class="r1">
+				<span><img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/phone.png" alt=""></span>
+				<input type="text" placeholder="填写手机" name="mobile">
+			</div>
+			<div class="r1">
+				<span><img class="product" src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/product.png" alt=""></span>
+				<!-- <input type="text" placeholder="选择体验产品"> -->
+				<select  name="select-Product" id="select-Product">
+                    <option>选择体验产品</option>
+                    <option value="15">美瞳<sup>&reg;</sup>+恒润氧<sup>&reg;</sup></option>
+                    <option value="10">美瞳<sup>&reg;</sup>+欧舒适<sup>&reg;</sup></option>
+                    <option value="14">美瞳<sup>&reg;</sup>+舒日散光<sup>&reg;</sup></option>
+                    <option value="18">美瞳<sup>&reg;</sup>+欧舒适散光<sup>&reg;</sup></option>
+                </select>
+			</div>
+			<di id="city">
+
+				<div class="r1">
+					<span><img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/build.png" alt=""></span>
+					<!-- input type="text" placeholder="选择城市"> -->
+					<select class="prov" se="prov" id="prov" name="select-prov">
+	                    <option>选择城市</option>
+	                    <!--<option>2</option>
+	                    <option>3</option>
+	                    <option>4</option>
+	                    <option>5</option>-->
+	                </select>
+				</div>
+				<div class="r1">
+					<span><img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/add.png" alt=""></span>
+					<!-- <input type="text" placeholder="选择区域"> -->
+					<select  class="city" se="city" id="city"  name="select-city">
+	                    <option>选择区域</option>
+	                    <!--<option>2</option>
+	                    <option>3</option>
+	                    <option>4</option>
+	                    <option>5</option>-->
+	                </select>
+				</div>
+				<div class="r1">
+					<span><img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/store.png" alt=""></span>
+					<!-- <input type="text" placeholder="选择门店"> -->
+					<select  class="dist" se="dist" id="dist" name="select-dist">
+	                    <option>选择门店</option>
+	                    <!--<option>2</option>
+	                    <option>3</option>
+	                    <option>4</option>
+	                    <option>5</option>-->
+	                </select>
+				</div>
+			</di>
+			<div class="r1 checkbox1">
+				<span  class="checkbox" for="checkbox_check1"><input type="checkbox" id="checkbox_check1"></span>
+				<p>您参与本试戴活动视为您已许可强生安视优 获取并使用您在活动中所提交的一切信息</p>
+			</div>
+			<div class="r1 checkbox2" for="checkbox_check2">
+				<span  class="checkbox"><input type="checkbox" id="checkbox_check2"></span>
+				<p>您已认真阅读活动详情，并了解活动规则</p>
+			</div>
+			<div class="sub">
+				<img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/sub.png" alt="" id="fromsubmit">
+			</div>
+			<div class="flower">
+				<img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/flower.png" alt="">
+			</div>
+		</form>
+
+	</div>
+    <div class="remLoadBeforeBg">
+	</div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://wechat.51i.cc/WeiXinSDK/WeiXinBase.aspx"  type="text/javascript"></script>
+	<script src="js/wechatShare.js"></script>
+	<script src='js/public.js'></script>
+	<script src="js/selectCity.js"></script>
+    <script>
+    	$(document).ready(function() {
+    		
+    		$('.check a').attr('href', 'six.html?state='+sessionStorage.getItem('Source'));
+
+
+    		
+    		$('#select-Product').change(function(){
+    			console.log(1);
+    			$.post('/TrialTools/baodaoh5_city?productId='+$(this).val(),function(data, textStatus, xhr) {
+
+					$("#city").citySelect({
+							url:data,
+							prov:"选择城市",
+							city:"选择区域",
+							dist:"选择门店"
+					});
+
+
+				})
+    		})
+			var checkSubmitFlg = false;
+    		$(function () {
+            $("#fromsubmit").click(function () {
+                $("#frmTrial").submit()
+            });
+            $("#frmTrial").submit(function () {
+            		
+                //获取值
+                var model = {
+                    "username": $("[name=username]").val(),
+                    "mobile": $("[name=mobile]").val(),
+                    //"selectProduct": $("[name=select-Product] option:selected").attr("value"),
+                    "selectprov": $("[name=select-prov] option:selected").attr("value"),
+                    "selectcity": $("[name=select-city] option:selected").attr("value"),
+                    "selectdist": $("[name=select-dist] option:selected").attr("value"),
+                    // "selectwenproduct": $("[name=select-wenproduct] option:selected").attr("value"),
+                    "Source": sessionStorage.getItem("Source"),
+                    "productId": $("[name=select-Product] option:selected").attr("value")
+                }
+                 function isnum(obj) { var reg = /^1[0-9]{10}$/; return reg.test(obj) }
+                //检验
+
+                if (model.username == "" || model.username == null) {
+                    alert("请填写您的姓名");
+                    return false
+                }
+                if (model.mobile == "" || model.mobile == null || isnum(model.mobile) == false) {
+                    alert("请填写您的手机");
+                    return false
+                }
+
+                if (model.productId == "" || model.productId == null) {
+                    alert("请选择您的产品");
+                    return false
+                }
+
+                if (model.selectprov == "" || model.selectprov == null) {
+                    alert("请选择您所在的城市");
+                    return false
+                }
+                if (model.selectcity == "" || model.selectcity == null) {
+                    alert("请选择您所在的区域");
+                    return false
+                }
+
+                if (model.selectdist == "" || model.selectdist == null) {
+                    alert("请选择门店");
+                    return false
+                }
+                // if (model.selectwenproduct == "" || model.selectwenproduct == null) {
+                //     alert("请选择您最常用的隐形眼镜品牌");
+                //     return false
+                // }
+                //没有勾选协议结束
+                if (!$('#checkbox_check1').is(':checked')) {
+                    alert("请同意并授权相关信息，完成体验申请！");
+                    return false
+                }
+                if (!$('#checkbox_check2').is(':checked')) {
+                    alert("请同意并授权相关信息，完成体验申请！");
+                    return false
+                }
+
+                //检测重复提交
+                if (!checkSubmitFlg) {
+                    // 第一次提交
+                    checkSubmitFlg = true;
+
+                } else {
+                    return false;
+                }
+                PutData(model);
+                return false;
+
+            });
+
+
+            function PutData(model) {
+
+                $.ajax({
+                    type: "post",
+                    cache: false,
+                    url: "/TrialTools/TrialPublic7",
+                    async: false,
+                    data: {
+                        method: "TrialPC7",
+                        UserName: model.username,
+                        mobile: model.mobile,
+                        product: model.productId,
+                        ka_outlet_code: model.selectdist,
+                        Source: model.Source
+                    },
+                    success: function (data) {
+                        // data = JSON.parse(data);
+                        
+                        if (data.status == "1") {
+                            alert(data.msg);
+                            window.location.href='five.html?state='+sessionStorage.getItem('Source'); 
+                            // window.location.href = "four.html?Source=" + sessionStorage.getItem("Source");
+                        } else {
+                            alert(data.msg);
+                            // 第一次提交
+                            checkSubmitFlg = false;
+                            window.location.href='five.html?state='+sessionStorage.getItem('Source'); 
+//                            if (data.msg == "您已参与过本活动，请注意查收活动短信") {
+                                // window.location.href = "four.html?Source=" + sessionStorage.getItem("Source");
+//                            }
+                        }
+                    },
+                    error: function (error) {
+                        //alert("网络繁忙");
+                    }
+                });
+            }
+        })
+
+    	});
+    </script>
+</body>
+</html>

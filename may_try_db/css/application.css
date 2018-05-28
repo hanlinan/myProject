@@ -1,0 +1,166 @@
+
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,
+		body{
+			width: 100%;
+			/*height: 100%;*/
+		}
+		body{
+			/*background-image: url(img/5.jpg);
+			background-repeat: no-repeat;
+			background-size: cover;*/
+			position: relative;
+			color: #fff;
+		}
+		.bg{
+			position: absolute;
+			z-index: -1;
+			width: 100%;
+		}
+		
+		div.form{
+			position: relative;
+			padding-left: 5%;
+			padding-right: 5%; 
+			padding-top: 2.75rem;
+		}
+		div.flower{
+			position: absolute;
+			bottom: 0.2rem;
+			left:0;
+		}
+		div.flower img{
+			width: 50%;
+		}
+		form{
+			background: #fff;
+			font-size: 0.3rem;
+			padding-left: 5%;
+			box-shadow: 2px 1px 7px 2px #b9b5b5;
+		}
+		div.check{
+			padding-top: 0.2rem;
+			/*padding-bottom: 0.1rem;*/
+			text-align: center;
+		}
+		div.sub{
+			padding-bottom: 0.2rem;
+		}
+		div.sub{
+			text-align: center;
+		}
+		div.check img,
+		div.sub img{
+			width: 50%;
+		}
+		div.r1{
+			line-height: 0.7rem;
+    		height: 0.7rem;
+    		margin-bottom: 0.1rem;
+		}
+		div.r1 span{
+			height: 0.7rem;
+		    width: 10%;
+		    display: inline-block;
+		    text-align: center;
+		}
+		div.r1 span img{
+			height: 70%;
+    		vertical-align: middle;
+		}
+		div.r1 input[type="text"]{
+			-webkit-appearance: none;   
+		}
+		div.r1 input,
+		div.r1 select{
+		    width: 75%;
+		    height: 0.6rem;
+		    padding-left: 0.2rem;
+		    background: #e8e8e8;
+		    border: 1px solid transparent;
+    		border-radius: 5px;
+    		box-shadow: 0 2px #c1bfbf;
+    		-webkit-box-shadow: 0 2px #c1bfbf;
+    		-moz-box-shadow: 0 2px #c1bfbf;
+    		outline: none;
+    		font-size: 0.24rem;
+
+		}
+		div.r1 select{
+			width: 79%;
+			-webkit-appearance: none;  
+		    -webkit-tap-highlight-color: #fff;  
+		    outline: 0;  
+
+		}
+		div.r1 img.product{
+			width: 100%;
+    		height: auto;
+		}
+		div.r1 {
+			width: 100%;
+    		height: auto;
+		}
+		div.r1 .checkbox input{
+			box-shadow: none;
+			height: 0.4rem;
+		}
+		div.r1 .checkbox{
+			height: 0.4rem;
+    		vertical-align: top;
+    		text-align: right;
+		}
+		div.checkbox1{
+			margin-bottom: 0;
+		}
+		div.checkbox2{
+			line-height: 1;
+			margin-bottom:0;
+		}
+		div.r1 p{
+			display: inline-block;
+			width: 80%;
+		    height: 0.6rem;
+		    /*padding-left: 0.2rem;*/
+		    color: #000;
+		    font-size: 0.22rem;
+		    line-height: 1.5;
+		    letter-spacing: 1px;
+		}
+		input:-moz-placeholder{
+			color: #000;
+		}
+		input::-webkit-input-placeholder{
+			color: #000;
+		}
+		input::-moz-placeholder{
+			color: #000;
+		}
+		input:-ms-input-placeholder{
+			color: #fff;
+		}
+		div.remLoadBeforeBg{
+			position: fixed;
+			background: #fff;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			top:0;
+		}
+		div.sub{
+			background: url(https://bdactivity.oss-cn-hangzhou.aliyuncs.com/may_db/sub.png) no-repeat center center;
+		    /* width: 63%; */
+		    height: 0.8rem;
+		    width: 3.2rem;
+		    background-size: contain;
+		    margin: 0 auto;
+		}
+		img{
+			pointer-events: none;
+		}
+		#bg {
+			pointer-events: none;	
+		}

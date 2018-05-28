@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>安视优®好礼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="csrf-token" content="{{ csrf_token() >">
+        <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+	<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css">
+    <!--<link type="text/css" href="css/style.css" rel="stylesheet"/>-->
+    <!-- <link rel="stylesheet" href="/choujiang/style.css"> -->
+    <!--<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/jquery.event.drag-1.5.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/jquery.touchSlider.js"></script>-->
+    <style>
+    html,
+    body{
+    	width: 100%;
+    	height: auto;
+    }
+    body{
+        background:url("https://lucky-draw.oss-cn-beijing.aliyuncs.com/april/add_bg2.png") no-repeat;
+		background-size: cover;
+    }
+        .main_visual{height:300px;border-top:1px solid #d7d7d7;overflow:hidden;position:relative;}
+        .main_image{height:300px;overflow:hidden;position:relative;}
+        .main_image ul{width:100%;height:300px;overflow:hidden;position:absolute;top:0;left:0}
+        .main_image li{float:left;width:100%;height:300px;}
+        .main_image li span{display:block;width:100%;height:300px}
+        .main_image li a{display:block;width:100%;height:300px}
+        div.flicking_con{position:absolute;top:270px;left:50%;z-index:999;height:21px;margin:0 0 0 -30px;}
+        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: #777 !important; opacity:1;
+        }
+
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: #777 !important;opacity:1;
+        }
+
+        input:-ms-input-placeholder{
+            color: #777 !important;opacity:1;
+        }
+
+        input::-webkit-input-placeholder{
+            color: #777 !important;opacity:1;
+        }
+        .form-control {color: #777}
+        .chouzhong2{
+        	padding-top: 17em;
+        	padding-left: 5%;
+        	padding-right: 5%;
+        }
+        @media screen and (max-width: 426px){
+        	.chouzhong2{
+        		padding-top: 32em;
+        	}
+        }
+        @media screen and (max-width: 375px){
+        	.chouzhong2{
+        		padding-top: 29em;
+        	}
+        }
+        @media screen and (max-width: 320px){
+        	.chouzhong2{
+        		padding-top: 25em;
+        	}
+        }
+        /* mui.alert()*/
+        .mui-popup.mui-popup-in{
+            display: block;
+            -webkit-transition-duration: 400ms;
+            transition-duration: 400ms;
+            -webkit-transform: translate3d(-50%,-50%,0) scale(1);
+            transform: translate3d(-50%,-50%,0) scale(1);
+            opacity: 1;
+        }
+        .mui-popup{
+            position: fixed;
+            z-index: 10000;
+            top: 50%;
+            left: 50%;
+            display: none;
+            overflow: hidden;
+            width: 270px;
+            -webkit-transition-property: -webkit-transform,opacity;
+            transition-property: transform,opacity;
+            -webkit-transform: translate3d(-50%,-50%,0) scale(1.185);
+            transform: translate3d(-50%,-50%,0) scale(1.185);
+            text-align: center;
+            opacity: 0;
+            color: #000;
+            border-radius: 13px;
+        }
+        .mui-popup-inner{
+            position: relative;
+            padding: 15px;
+            border-radius: 13px 13px 0 0;
+            background: rgba(255,255,255,.95);
+        }
+        .mui-popup-title{
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+        }
+        .mui-popup-title+.mui-popup-text{
+            font-family: inherit;
+            font-size: 14px;
+            margin: 5px 0 0;
+        }
+        .mui-popup-inner:after{
+            position: absolute;
+            z-index: 15;
+            top: auto;
+            right: auto;
+            bottom: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 1px;
+            content: '';
+            -webkit-transform: scaleY(.5);
+            transform: scaleY(.5);
+            -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+            background-color: rgba(0,0,0,.2);
+        }
+        .mui-popup-buttons{
+            position: relative;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            height: 44px;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
+        .mui-popup-button:first-child:last-child{
+            border-radius: 0 0 13px 13px;
+        }
+        .mui-popup-button.mui-popup-button-bold{
+            font-weight: 600;
+        }
+        .mui-popup-button:last-child,
+        .mui-popup-button:first-child{
+                border-radius: 0 0 13px;
+        }
+        .mui-popup-button{
+            font-size: 17px;
+            line-height: 44px;
+            position: relative;
+            display: block;
+            overflow: hidden;
+            box-sizing: border-box;
+            width: 100%;
+            height: 44px;
+            padding: 0 5px;
+            cursor: pointer;
+            text-align: center;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: #007aff;
+            background: rgba(255,255,255,.95);
+            -webkit-box-flex: 1;
+        }
+        .mui-popup-backdrop.mui-active{
+            opacity: 1;
+        }
+        .mui-popup-backdrop{
+                position: fixed;
+            z-index: 998;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            -webkit-transition-duration: 400ms;
+            transition-duration: 400ms;
+            opacity: 0;
+            background: rgba(0,0,0,.4);
+        }
+        td{
+            font-weight: bold;
+            color: #d74b6f;
+        }
+    </style>
+
+
+</head>
+<body>
+<!--<img src="images/chouzhong1.jpg" class="chouzhong1">-->
+<!-- <img src="https://i.loli.net/2017/12/21/5a3b2add74033.jpg" class="chouzhong1"> -->
+
+<div class="chouzhong2">
+<!--<form action="" name="form1">-->
+    <table class="chouzhongtabel">
+        <tr>
+            <!--<td><img src="images/chouzhong3.png" style="width: 100%"></td>-->
+            <td><img src="https://lucky-draw.oss-cn-beijing.aliyuncs.com/april/add_aqy.png" style="width: 100%"></td>
+        </tr>
+        <tr>
+            <td style="height: 10px;"></td>
+        </tr>
+        <tr>
+            <td>姓名：</td>
+        </tr>
+        <tr>
+            <td><input type="text" name="Uname" class="form-control" placeholder="*请填写您的姓名" style="float: left;color: #777;height: 40px;border: 1px solid #d74b6f"></td>
+        </tr>
+        <tr>
+            <td style="height: 10px;"></td>
+        </tr>
+        <tr>
+            <td>电话：</td>
+        </tr>
+        <tr>
+            <td><input type="text" name="Phone" class="form-control" placeholder="*请填写您的电话" style="float: left;color: #777;height: 40px;border: 1px solid #d74b6f"></td>
+        </tr>
+        <tr>
+            <td style="height: 10px;"></td>
+        </tr>
+        
+        <tr>
+            <td style="height: 20px;"></td>
+        </tr>
+        <tr>
+            <!--<td><img src="images/chouzhongbu.png" style="width: 50%;float: left;display: block;margin-left: 25%"></td>-->
+            <td><img src="https://i.loli.net/2017/12/21/5a3b2b49bc5a5.png" onclick="sendData()" style="width: 50%;float: left;display: block;margin-left: 25%"></td>
+        </tr>
+        <tr>
+            <td height="30"></td>
+        </tr>
+    </table>
+<!--</form>-->
+</div>
+<div class="mui-popup mui-popup-in"  style="display: none">
+        <div class="mui-popup-inner">
+            <div class="mui-popup-title">
+                提示
+            </div>
+            <div class="mui-popup-text">
+                
+            </div>
+        </div>
+        <div class="mui-popup-buttons">
+            <span class="mui-popup-button mui-popup-button-bold closeModal">确定</span>
+        </div>
+    </div>  
+    <div class="mui-popup-backdrop mui-active" style="display: none;"></div>
+</body>
+
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://wechat.51i.cc/WeiXinSDK/WeiXinBase.aspx"  type="text/javascript"></script>
+<script>
+
+    // if(localStorage.getItem('prize_code') == 1){
+    //     $('body').css('background-image','url(https://lucky-draw.oss-cn-beijing.aliyuncs.com/april/add_bg1.jpg)');
+    // }else if(localStorage.getItem('prize_code') == 2){
+    //     $('body').css('background-image','url(https://lucky-draw.oss-cn-beijing.aliyuncs.com/april/add_bg2.jpg)');
+    // }else if(localStorage.getItem('prize_code') == 3){
+    //     $('body').css('background-image','url(https://lucky-draw.oss-cn-beijing.aliyuncs.com/april/bg3.jpg)');
+    // }
+    cityArray = new Array();
+    cityArray[0] = new Array("北京市","东城|西城|崇文|宣武|朝阳|丰台|石景山|海淀|门头沟|房山|通州|顺义|昌平|大兴|平谷|怀柔|密云|延庆");
+    cityArray[1] = new Array("上海市","黄浦|卢湾|徐汇|长宁|静安|普陀|闸北|虹口|杨浦|闵行|宝山|嘉定|浦东|金山|松江|青浦|南汇|奉贤|崇明");
+    cityArray[2] = new Array("天津市","和平|东丽|河东|西青|河西|津南|南开|北辰|河北|武清|红挢|塘沽|汉沽|大港|宁河|静海|宝坻|蓟县");
+    cityArray[3] = new Array("重庆市","万州|涪陵|渝中|大渡口|江北|沙坪坝|九龙坡|南岸|北碚|万盛|双挢|渝北|巴南|黔江|长寿|綦江|潼南|铜梁 |大足|荣昌|壁山|梁平|城口|丰都|垫江|武隆|忠县|开县|云阳|奉节|巫山|巫溪|石柱|秀山|酉阳|彭水|江津|合川|永川|南川");
+    cityArray[4] = new Array("河北省","石家庄|邯郸|邢台|保定|张家口|承德|廊坊|唐山|秦皇岛|沧州|衡水");
+    cityArray[5] = new Array("山西省","太原|大同|阳泉|长治|晋城|朔州|吕梁|忻州|晋中|临汾|运城");
+    cityArray[6] = new Array("内蒙古自治区","呼和浩特|包头|乌海|赤峰|呼伦贝尔盟|阿拉善盟|哲里木盟|兴安盟|乌兰察布盟|锡林郭勒盟|巴彦淖尔盟|伊克昭盟");
+    cityArray[7] = new Array("辽宁省","沈阳|大连|鞍山|抚顺|本溪|丹东|锦州|营口|阜新|辽阳|盘锦|铁岭|朝阳|葫芦岛");
+    cityArray[8] = new Array("吉林省","长春|吉林|四平|辽源|通化|白山|松原|白城|延边");
+    cityArray[9] = new Array("黑龙江省","哈尔滨|齐齐哈尔|牡丹江|佳木斯|大庆|绥化|鹤岗|鸡西|黑河|双鸭山|伊春|七台河|大兴安岭");
+    cityArray[10] = new Array("江苏省","南京|镇江|苏州|南通|扬州|盐城|徐州|连云港|常州|无锡|宿迁|泰州|淮安");
+    cityArray[11] = new Array("浙江省","杭州|宁波|温州|嘉兴|湖州|绍兴|金华|衢州|舟山|台州|丽水");
+    cityArray[12] = new Array("安徽省","合肥|芜湖|蚌埠|马鞍山|淮北|铜陵|安庆|黄山|滁州|宿州|池州|淮南|巢湖|阜阳|六安|宣城|亳州");
+    cityArray[13] = new Array("福建省","福州|厦门|莆田|三明|泉州|漳州|南平|龙岩|宁德");
+    cityArray[14] = new Array("江西省","南昌市|景德镇|九江|鹰潭|萍乡|新馀|赣州|吉安|宜春|抚州|上饶");
+    cityArray[15] = new Array("山东省","济南|青岛|淄博|枣庄|东营|烟台|潍坊|济宁|泰安|威海|日照|莱芜|临沂|德州|聊城|滨州|菏泽");
+    cityArray[16] = new Array("河南省","郑州|开封|洛阳|平顶山|安阳|鹤壁|新乡|焦作|濮阳|许昌|漯河|三门峡|南阳|商丘|信阳|周口|驻马店|济源");
+    cityArray[17] = new Array("湖北省","武汉|宜昌|荆州|襄樊|黄石|荆门|黄冈|十堰|恩施|潜江|天门|仙桃|随州|咸宁|孝感|鄂州");
+    cityArray[18] = new Array("湖南省","长沙|常德|株洲|湘潭|衡阳|岳阳|邵阳|益阳|娄底|怀化|郴州|永州|湘西|张家界");
+    cityArray[19] = new Array("广东省","广州|深圳|珠海|汕头|东莞|中山|佛山|韶关|江门|湛江|茂名|肇庆|惠州|梅州|汕尾|河源|阳江|清远|潮州|揭阳|云浮");
+    cityArray[20] = new Array("广西壮族自治区","南宁|柳州|桂林|梧州|北海|防城港|钦州|贵港|玉林|南宁地区|柳州地区|贺州|百色|河池");
+    cityArray[21] = new Array("海南省","海口|三亚");
+    cityArray[22] = new Array("四川省","成都|绵阳|德阳|自贡|攀枝花|广元|内江|乐山|南充|宜宾|广安|达川|雅安|眉山|甘孜|凉山|泸州");
+    cityArray[23] = new Array("贵州省","贵阳|六盘水|遵义|安顺|铜仁|黔西南|毕节|黔东南|黔南");
+    cityArray[24] = new Array("云南省","昆明|大理|曲靖|玉溪|昭通|楚雄|红河|文山|思茅|西双版纳|保山|德宏|丽江|怒江|迪庆|临沧");
+    cityArray[25] = new Array("西藏自治区","拉萨|日喀则|山南|林芝|昌都|阿里|那曲");
+    cityArray[26] = new Array("陕西省","西安|宝鸡|咸阳|铜川|渭南|延安|榆林|汉中|安康|商洛");
+    cityArray[27] = new Array("甘肃省","兰州|嘉峪关|金昌|白银|天水|酒泉|张掖|武威|定西|陇南|平凉|庆阳|临夏|甘南");
+    cityArray[28] = new Array("宁夏回族自治区","银川|石嘴山|吴忠|固原");
+    cityArray[29] = new Array("青海省","西宁|海东|海南|海北|黄南|玉树|果洛|海西");
+    cityArray[30] = new Array("新疆维吾尔族自治区","乌鲁木齐|石河子|克拉玛依|伊犁|巴音郭勒|昌吉|克孜勒苏柯尔克孜|博尔塔拉|吐鲁番|哈密|喀什|和田|阿克苏");
+    cityArray[31] = new Array("香港特别行政区","香港特别行政区");
+    cityArray[32] = new Array("澳门特别行政区","澳门特别行政区");
+    cityArray[33] = new Array("台湾省","台北|高雄|台中|台南|屏东|南投|云林|新竹|彰化|苗栗|嘉义|花莲|桃园|宜兰|基隆|台东|金门|马祖|澎湖");
+//    cityArray[34] = new Array("其它","北美洲|南美洲|亚洲|非洲|欧洲|大洋洲");
+	var storage=window.localStorage;
+    function getCity(currProvince)
+    {
+        //当前 所选择 的 省
+        var currProvincecurrProvince = currProvince;
+        var i,j,k;
+        //清空 城市 下拉选单
+        document.all.selCity.length = 0 ;
+        for (i = 0 ;i <cityArray.length;i++)
+        {
+            //得到 当前省 在 城市数组中的位置
+            if(cityArray[i][0]==currProvince)
+            {
+                //得到 当前省 所辖制的 地市
+                tmpcityArray = cityArray[i][1].split("|")
+                for(j=0;j<tmpcityArray.length;j++)
+                {
+                    //填充 城市 下拉选单
+                    document.all.selCity.options[document.all.selCity.length] = new Option(tmpcityArray[j],tmpcityArray[j]);
+                }
+            }
+        }
+    }
+
+    // $.ajaxSetup({
+    //     headers: {
+    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     }
+    // });
+
+    function sendData(){
+        var Uname = $('input[name="Uname"]').val(),
+            Phone = $('input[name="Phone"]').val();
+
+        if(Uname == ''){
+            msg('您没有填写您的姓名！');
+            return false;
+        }
+
+        if(Phone == ''){
+            msg('您没有填写您的手机号！');
+            return false;
+        }
+
+        // if(Province == ''){
+        //     msg('您没有选择您的省！');
+        //     return false;
+        // }
+
+        // if(City == ''){
+        //     msg('您没有选择您的城市！');
+        //     return false;
+        // }
+
+        // if(Address == ''){
+        //     msg('您没有填写您的具体地址！');
+        //     return false;
+        // }
+
+        $.post('http://campaign.51i.cc/api/april/winner/prize2/sendsms',{
+            openid:localStorage.getItem('april_openId'),
+            name : Uname,
+            phone : Phone
+        },function(data){
+            
+            	
+                if(data.error == 0){
+                    msg('提交成功！电子券码将发送到您的手机上~');
+                    $('.closeModal').click(function(event) {
+                        window.location.href = 'suc.html?state='+localStorage.getItem('state');
+                        
+                    });
+                }
+                if(data.error == 504){
+                    msg('没有中奖纪录')
+                }
+            
+        })
+        
+
+    }
+    function msg(txt){
+            $('.mui-active').show();
+            $('.mui-popup-in').show();
+            $('.mui-popup-text').text(txt);
+        }
+        function closeMsg(){
+            $('.mui-active').hide();
+            $('.mui-popup-in').hide();
+        }
+        /* 点击关闭信息弹出框 */
+        $('.closeModal').click(function(event) {
+            closeMsg();
+            // console.log(1);
+        });
+
+
+
+        /* 微信分享 */
+            /*---------------------      分享渠道 entrance15   --------------------   */
+            wx.ready(function(){
+                    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+                    wx.onMenuShareAppMessage({
+
+                        title: '安视优®好礼', // 分享标题
+                        desc: '立即点击抽取您的4月安视优好礼-戴森吹风机!', // 分享描述
+                        link: 'http://wechat.51i.cc/campaign/april/entrance15.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: 'http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/share.jpg', // 分享图标
+                        type: 'link', // 分享类型,music、video或link，不填默认为link
+                        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                        success: function () {
+                            $('.share').hide()
+                            
+                        },
+                        cancel: function () {
+                            $('.share').hide()
+                        }
+
+                    });
+                    wx.onMenuShareTimeline({
+                        title: '立即点击抽取您的4月安视优好礼-戴森吹风机！', // 分享标题
+                        link: 'http://wechat.51i.cc/campaign/april/entrance15.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            //            imgUrl: 'http://ww2.sinaimg.cn/large/0060lm7Tly1fmrwmfg72pj30ku0d7762.jpg', // 分享图标
+                        imgUrl: 'http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/share.jpg', // 分享图标
+                        success: function () {
+                            $('.share').hide()
+                            
+                        },
+                        cancel: function () {
+                            $('.share').hide()
+                        }
+                    });
+            })
+            wx.error(function(res){
+                    alert(res);
+                    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+
+        });
+</script>
+</html>

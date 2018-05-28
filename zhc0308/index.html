@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+
+	<title>天才暖男作家—-张皓宸已上</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,
+		body{
+			width: 100%;
+			height: 100%;
+		}
+		body{
+			background-image: url(http://lucky-draw.oss-cn-beijing.aliyuncs.com/imzhcg/img/1.jpg);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			position: relative;
+			color: #fff;
+		}
+		div.load{
+			position: absolute;
+		    left: 0;
+		    right: 0;
+		    top: -20%;
+		    bottom: 0;
+		    margin: auto;
+		    height: 30px;
+		    width: 60%;
+		    text-align: center;
+		    font-size: 20px;
+		}
+		div.load > div{
+			height: 10px;
+		    border: 2px solid #d4145a;
+		    border-radius: 10px;
+		    background: #fff;
+		    margin-bottom: 10px;
+		}
+		div.progress{
+			width: 0%;
+			height: 10px;
+			background: #d4145a;
+			border-radius: 10px;
+			margin-left: -1%;
+		}
+		@media only screen and (width: 375px) and (min-height: 690px){
+		    
+		    body{
+		    	background-image: url(http://lucky-draw.oss-cn-beijing.aliyuncs.com/imzhcg/img/1-x.jpg);
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+		    }
+		}
+	</style>
+</head>
+<body>
+	<div class="load">
+		<div class>
+			<div class="progress" >
+				
+			</div>
+		</div>
+		<span>Loading......</span>
+	</div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://wechat.51i.cc/WeiXinSDK/WeiXinBase.aspx"  type="text/javascript"></script>
+	<script src="js/wechatShare.js"></script>
+	<script>
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?79f522cf9bc45009b905e9daa8283677";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+
+	</script>
+    <script>
+    	$(document).ready(function() {
+
+
+			function GetRequest() {
+			    var url = location.search; 
+			    var theRequest = new Object();
+			    if (url.indexOf("?") != -1) {
+			    	var str = url.substr(1);
+			    	strs = str.split("&");
+			    	for(var i = 0; i < strs.length; i ++) {
+			      		theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+			    	}
+			  	}
+			  	return theRequest;
+			}
+			
+			Request = GetRequest();
+			sessionStorage.setItem('Source',Request.state);
+
+
+    		$('.progress').animate({
+    			width:'102%'
+    		}, 3000 ,function(){
+    			location.href='second.html?state='+Request.state;
+    		})	
+
+    		
+			
+	 		
+    	});
+    </script>
+</body>
+</html>

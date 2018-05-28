@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<title>安视优®好礼</title>
+	<link href="https://cdn.staticfile.org/normalize/6.0.0/normalize.min.css" rel="stylesheet">
+
+	<style>
+		html,
+		body{
+			width: 100%;
+		  	height:100%;
+		}
+		body{
+		  	background:url("") no-repeat;
+		 	background-size: 100%;
+		}
+		.container{
+			/*padding-top: 7rem;*/
+			padding-left: 8%;
+			padding-right: 8%;
+			height: 100%;
+			position: relative;
+		}
+		.container div{
+			width: 100%;
+		}
+		div.r1{
+			position: absolute;
+			bottom: 1rem;
+			left: 0;
+			text-align: center;
+		}
+		div.r1 img{
+			width: 90%;
+		}
+		
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="r1">
+			<img src="" alt="">
+		</div>
+		
+	</div>
+	
+
+	<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://wechat.51i.cc/WeiXinSDK/WeiXinBase.aspx"  type="text/javascript"></script>
+	<script>
+
+		$.post('http://campaign.51i.cc/api/april/user/openid/'+localStorage.getItem('april_openId'), function(data, textStatus, xhr) {
+			// $.post('test.json', function(data, textStatus, xhr) {
+				if(data.user.prize == 1){
+		        	$('body').css('background-image','url(http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/bg1.png)');
+		        	$('.r1').find('img').attr('src', 'http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/ds_suc.png');
+			    }else if(data.user.prize == 2){
+			        $('body').css('background-image','url(http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/bg2.png)');
+					$('.r1').find('img').attr('src', 'http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/aqy_suc.png');
+			    }else if(data.user.prize == 3){
+			        $('body').css('background-image','url(http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/bg3.png)');
+					$('.r1').find('img').attr('src', 'http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/jf_suc.png');
+			    }else{
+			    	alert('中奖信息有误')
+			    }
+			});
+
+		(function (doc, win) {
+		    var docEl = doc.documentElement,
+		        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		        recalc = function () {
+		            var clientWidth = docEl.clientWidth;
+		            if (!clientWidth) return;
+		            if (clientWidth >= 750) {
+		                docEl.style.fontSize = '100px';
+		            } else {
+		                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+		            }
+		        };
+		    if (!doc.addEventListener) return;
+		    win.addEventListener(resizeEvt, recalc, false);
+		    doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+
+
+		/* 微信分享 */
+			/*---------------------      分享渠道 entrance15   --------------------   */
+	 		wx.ready(function(){
+			        // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+			        wx.onMenuShareAppMessage({
+
+			            title: '安视优®好礼', // 分享标题
+			            desc: '立即点击抽取您的4月安视优好礼-戴森吹风机!', // 分享描述
+			            link: 'http://wechat.51i.cc/campaign/april/entrance15.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+			            imgUrl: 'http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/share.jpg', // 分享图标
+			            type: 'link', // 分享类型,music、video或link，不填默认为link
+			            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+			            success: function () {
+			                $('.share').hide()
+			                
+			                
+			            },
+			            cancel: function () {
+			                $('.share').hide()
+			            }
+
+			        });
+			        wx.onMenuShareTimeline({
+			            title: '立即点击抽取您的4月安视优好礼-戴森吹风机！', // 分享标题
+			            link: 'http://wechat.51i.cc/campaign/april/entrance15.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+			//            imgUrl: 'http://ww2.sinaimg.cn/large/0060lm7Tly1fmrwmfg72pj30ku0d7762.jpg', // 分享图标
+			            imgUrl: 'http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/share.jpg', // 分享图标
+			            success: function () {
+			                $('.share').hide()
+			                
+			            },
+			            cancel: function () {
+			                $('.share').hide()
+			            }
+			        });
+		    })
+		    wx.error(function(res){
+		    		alert(res);
+				    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+
+		});
+	</script>
+</body>
+</html>

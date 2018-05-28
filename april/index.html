@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<title>安视优®好礼</title>
+
+    <!-- <link href="https://cdn.bootcss.com/mui/3.7.1/css/mui.min.css" rel="stylesheet"> -->
+	<link href="https://cdn.staticfile.org/normalize/6.0.0/normalize.min.css" rel="stylesheet">
+	<link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<style>
+		html,
+		body{
+			width: 100%;
+		  	height:auto;
+		  	padding: 0;
+		  	margin: 0;
+		}
+		body{
+		  	background:url("http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/bg.jpg")
+		  	 no-repeat;
+		 	background-size: 100%;
+	 	     font-family: 'Helvetica Neue',Helvetica,sans-serif; 
+		     font-size: 17px; 
+		     line-height: 21px; 
+		     color: #000; 
+		}
+		.container{
+			padding-top: 8.8rem;
+			padding-bottom: 0.3rem;
+		}
+		.container div{
+			width: 90%;
+			margin-left: 5%;
+			margin-right: 5%;
+		    margin-bottom: 2%;
+		}
+		div.r1 p{
+			background: rgba(253,128,161,.7);
+			text-align: center;
+			color: #fff;
+			font-size: 0.28rem;
+			height: 0.6rem;
+			width: 4rem;
+			letter-spacing: 1px;
+			line-height: 0.6rem;
+			border:1px solid transparent;
+			border-radius: 0.3rem;
+			margin: 0 auto;
+		}
+		div.r1 p b{
+			color:#ffdd7a;
+		}
+		div.r1 .count{
+			font-size: 0.36rem;
+			margin:0 1px;
+		}
+		/*转盘*/
+		div.r2{
+			/*background: url(img/a.png) no-repeat;*/
+			width: 100%;
+			position: relative;
+			margin:0;
+		}
+		div.r2 .turntable{
+			width: 100%;
+			/*position: absolute;*/
+			z-index: -1;
+		}
+		div.r2 .hand{
+			/*position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50% -50%);*/
+			position: absolute;
+		    top: 0.3rem;
+    		left: 0.3rem;
+			width: 90%;
+			transform:rotate(180deg);
+			-webkit-transform:rotate(180deg);
+		}
+		div.r3{
+			position: relative;
+			top: -15px;
+			text-align: center;
+			height: 0.9rem;
+		}
+		div.r3 img{
+		    width: 90%;
+    		/*padding-left: 5%;*/
+    		vertical-align: middle;
+
+		}
+		div.r4{
+			text-indent: 0.20rem;
+			font-size: 0.20rem;
+			color: #000;
+			height: 20px;
+			margin-top: -0.3rem;
+    		margin-bottom: 0.1rem;
+			
+		}
+		div.r5 img{
+			width: 100%;
+			margin-bottom: 0.4rem;
+		}
+		div.r6 img{
+			width: 100%;
+
+			margin-bottom: 0.4rem;
+			/*margin-top: 0.5rem;*/
+		}
+		div.r7 img{
+			width: 100%;
+			position: relative;
+			z-index: -1;
+			/*margin-top: 0.5rem;*/
+		}
+		div.r7{
+			font-size: 0.28rem;
+
+			position: relative;
+			color: #fff;
+			overflow: hidden;
+		}
+		div.r7 div{
+			/*padding-top: 0.1rem;*/
+			position: absolute;
+			top: 0.1rem;
+			left: 0;
+		}
+		div.r7 .ul1{
+			width: 100%;
+			height: inherit;
+			overflow-y: hidden;
+		    /*list-style: none;
+    		padding: 0;
+    		margin-top: 0;*/
+		}
+		div.r7 .ul1 > li{
+			/*padding:  0.4em 0 !important;*/
+			height: 0.60rem;
+			font-size: 0.24rem;
+		}
+
+		@media screen and (max-width: 320px){
+			div.r7 .ul1 > li{
+				/*margin: 0.7em 0 !important;*/
+				height: 0.6rem;
+			}
+		}
+		div.r7 .ul2{
+			list-style: none;
+			padding: 0 5%;
+			/*width: 100%;*/
+		}
+		div.r7 .ul2 li{
+			display: inline-block;
+			width: 32%;
+			text-align: center;
+		}
+		div.cover{
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,.5);
+			top: 0;
+		}
+		div.r8 >div{
+			position: absolute;
+			/*left: 0;*/
+			text-align: center;
+			/*top: 7rem;
+			z-index: 10;
+			display: none;*/
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 100%;
+		}
+		div.r8 img{
+			width: 80%;
+		}
+		div.r8 .close{
+			position: relative;
+			display: none;
+
+		}
+		div.r8 .closebtn{
+			position: absolute;
+		    left: 11%;
+    		top: 1%;
+			width: 30px;
+			height: 30px;
+			line-height:30px;
+			border-radius: 15px;
+			background: #fff;
+			color: #2b83d3;
+			font-size: 0.32rem;
+		}
+		/* msg()*/
+		.mui-popup.mui-popup-in{
+			display: block;
+		    -webkit-transition-duration: 400ms;
+		    transition-duration: 400ms;
+		    -webkit-transform: translate3d(-50%,-50%,0) scale(1);
+		    transform: translate3d(-50%,-50%,0) scale(1);
+		    opacity: 1;
+		}
+		.mui-popup{
+			position: fixed;
+		    z-index: 10000;
+		    top: 50%;
+		    left: 50%;
+		    display: none;
+		    overflow: hidden;
+		    width: 270px;
+		    -webkit-transition-property: -webkit-transform,opacity;
+		    transition-property: transform,opacity;
+		    -webkit-transform: translate3d(-50%,-50%,0) scale(1.185);
+		    transform: translate3d(-50%,-50%,0) scale(1.185);
+		    text-align: center;
+		    opacity: 0;
+		    color: #000;
+		    border-radius: 13px;
+		}
+		.mui-popup-inner{
+			position: relative;
+		    padding: 15px;
+		    border-radius: 13px 13px 0 0;
+		    background: rgba(255,255,255,.95);
+		}
+		.mui-popup-title{
+			font-size: 18px;
+		    font-weight: 500;
+		    text-align: center;
+		}
+		.mui-popup-title+.mui-popup-text{
+			font-family: inherit;
+		    font-size: 14px;
+		    margin: 5px 0 0;
+		}
+		.mui-popup-inner:after{
+		    position: absolute;
+		    z-index: 15;
+		    top: auto;
+		    right: auto;
+		    bottom: 0;
+		    left: 0;
+		    display: block;
+		    width: 100%;
+		    height: 1px;
+		    content: '';
+		    -webkit-transform: scaleY(.5);
+		    transform: scaleY(.5);
+		    -webkit-transform-origin: 50% 100%;
+		    transform-origin: 50% 100%;
+		    background-color: rgba(0,0,0,.2);
+		}
+		.mui-popup-buttons{
+			position: relative;
+		    display: -webkit-box;
+		    display: -webkit-flex;
+		    display: flex;
+		    height: 44px;
+		    -webkit-box-pack: center;
+		    -webkit-justify-content: center;
+		    justify-content: center;
+		}
+		.mui-popup-button:first-child:last-child{
+			border-radius: 0 0 13px 13px;
+		}
+		.mui-popup-button.mui-popup-button-bold{
+			font-weight: 600;
+		}
+		.mui-popup-button:last-child,
+		.mui-popup-button:first-child{
+			    border-radius: 0 0 13px;
+		}
+		.mui-popup-button{
+			font-size: 17px;
+		    line-height: 44px;
+		    position: relative;
+		    display: block;
+		    overflow: hidden;
+		    box-sizing: border-box;
+		    width: 100%;
+		    height: 44px;
+		    padding: 0 5px;
+		    cursor: pointer;
+		    text-align: center;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		    color: #007aff;
+		    background: rgba(255,255,255,.95);
+		    -webkit-box-flex: 1;
+		}
+		.mui-popup-backdrop.mui-active{
+			opacity: 1;
+		}
+		.mui-popup-backdrop{
+			    position: fixed;
+		    z-index: 998;
+		    top: 0;
+		    right: 0;
+		    bottom: 0;
+		    left: 0;
+		    -webkit-transition-duration: 400ms;
+		    transition-duration: 400ms;
+		    opacity: 0;
+		    background: rgba(0,0,0,.4);
+		}
+		.share{
+			display: none;
+		}
+		.loading{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,.7);
+			z-index: 9;
+			text-align: center;
+			padding-top: 65%;
+		}
+		.loading i{
+			color: #fff;
+		}
+		.loading p{
+			color: #fff;
+			margin-top: 0.2rem;
+			letter-spacing: 3px;
+			font-size: 0.30rem;
+		}
+		
+	</style>
+</head>
+<body>
+		<!-- <div class="cover"> -->
+			
+	<div class="container ">
+		<div class="r1">
+			<p>您今天还剩<b class="count">...</b>次抽奖机会</p>
+		</div>
+		<div class="r2">
+			<img class="turntable imgrotate" src="http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/a.png" alt="">
+			<img class="hand" src="https://i.loli.net/2017/12/24/5a3f5f2480716.png" alt="">
+		</div>
+		<div class="r3">
+			<img class="triggerRotate" src="https://lucky-draw.oss-cn-beijing.aliyuncs.com/april/click.png" alt="">
+		</div>
+		<div class="r4">
+			*礼品以实物为准
+		</div>
+		<div class="r5">
+			<img src="http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/r5.png" alt="">
+		</div>
+		<div class="r6">
+			<img src="http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/r6.png" alt="">
+		</div>
+		<div class="r7">
+			<img src="http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/r7.png" alt="">
+			<div id="example" style="height: 1.6rem;">
+				<ul class="ul1">
+					<!-- <li>
+						<ul class="ul2">
+							<li>
+								187xxxx1234
+							</li>
+							<li>
+								抽中
+							</li>
+							<li>
+								戴森吹风机
+							</li>
+						</ul>
+					</li>
+					<li>
+						<ul class="ul2">
+							<li>
+								187xxxx1234
+							</li>
+							<li>
+								抽中
+							</li>
+							<li>
+								爱奇艺季卡2张
+							</li>
+						</ul>
+					</li>
+					<li>
+						<ul class="ul2">
+							<li>
+								187xxxx1234
+							</li>
+							<li>
+								抽中
+							</li>
+							<li>
+								500积分
+							</li>
+						</ul>
+					</li>
+					<li>
+						<ul class="ul2">
+							<li>
+								187xxxx1234
+							</li>
+							<li>
+								抽中
+							</li>
+							<li>
+								爱奇艺季卡2张
+							</li>
+						</ul>
+					</li>
+					<li>
+						<ul class="ul2">
+							<li>
+								187xxxx1234
+							</li>
+							<li>
+								抽中
+							</li>
+							<li>
+								戴森吹风机
+							</li>
+						</ul>
+					</li>
+					<li>
+						<ul class="ul2">
+							<li>
+								187xxxx1234
+							</li>
+							<li>
+								抽中
+							</li>
+							<li>
+								500积分
+							</li>
+						</ul>
+					</li>
+ -->				</ul> 
+			</div>
+			
+		</div>
+		
+	</div>
+	<div class="r8">
+		<div class="close">
+			<div class="closebtn ">X</div>
+			<img src="http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/activity.png" alt="">
+		</div>
+	</div>
+	<!-- </div> -->
+	
+	<div class="mui-popup mui-popup-in"  style="display: none">
+		<div class="mui-popup-inner">
+			<div class="mui-popup-title">
+				提示
+			</div>
+			<div class="mui-popup-text">
+				
+			</div>
+		</div>
+		<div class="mui-popup-buttons">
+			<span class="mui-popup-button mui-popup-button-bold closeModal">确定</span>
+		</div>
+	</div>	
+	<div class="mui-popup-backdrop mui-active" style="display: none;"></div>
+	<!-- 分享 -->
+	<div class="share" style="position: fixed;width: 100%;z-index: 1000;height: 100%;overflow-y: scroll;top: 0;">
+	    <img src="https://i.loli.net/2017/12/26/5a41f766206cd.png" style="float: left;width: 100%;top: 0;" onclick="$('.share').hide()">
+	</div>
+	<div class="share" style="width: 100%;top:0;bottom:0;background-color: black;opacity: 0.8;position: fixed;z-index: 100"></div>
+
+	<div class="loading">
+		<i class="fa fa-spinner fa-pulse fa-4x"></i>
+		<p>获取用户信息中</p>
+	</div>
+	<!-- <script src="https://cdn.bootcss.com/mui/3.7.1/js/mui.min.js"></script> -->
+	<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+	<script src="http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/awordrotate.js"></script>
+	<script src="http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/vticker.js"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://wechat.51i.cc/WeiXinSDK/WeiXinBase.aspx"  type="text/javascript"></script>
+	
+	<script>
+		// (function (doc, win) {
+
+		//     var docEl = doc.documentElement,
+		//         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		//         recalc = function () {
+		//             var clientWidth = docEl.clientWidth;
+		//             if (!clientWidth) return;
+		//             if (clientWidth >= 750) {
+		//                 docEl.style.fontSize = '100px';
+		//             } else {
+		//                 docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+		//             }
+		//         };
+		//     if (!doc.addEventListener) return;
+		//     win.addEventListener(resizeEvt, recalc, false);
+		//     doc.addEventListener('DOMContentLoaded', recalc, false);
+		    
+		// })(document, window);
+
+		;(function(win, lib) {
+		    var doc = win.document;
+		    var docEl = doc.documentElement;
+		    var metaEl = doc.querySelector('meta[name="viewport"]');
+		    var flexibleEl = doc.querySelector('meta[name="flexible"]');
+		    var dpr = 0;
+		    var scale = 0;
+		    var tid;
+		    var flexible = lib.flexible || (lib.flexible = {});
+		    
+		    if (metaEl) {
+		        console.warn('将根据已有的meta标签来设置缩放比例');
+		        var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
+		        if (match) {
+		            scale = parseFloat(match[1]);
+		            dpr = parseInt(1 / scale);
+		        }
+		    } else if (flexibleEl) {
+		        var content = flexibleEl.getAttribute('content');
+		        if (content) {
+		            var initialDpr = content.match(/initial\-dpr=([\d\.]+)/);
+		            var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);
+		            if (initialDpr) {
+		                dpr = parseFloat(initialDpr[1]);
+		                scale = parseFloat((1 / dpr).toFixed(2));    
+		            }
+		            if (maximumDpr) {
+		                dpr = parseFloat(maximumDpr[1]);
+		                scale = parseFloat((1 / dpr).toFixed(2));    
+		            }
+		        }
+		    }
+
+		    if (!dpr && !scale) {
+		        var isAndroid = win.navigator.appVersion.match(/android/gi);
+		        var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+		        var devicePixelRatio = win.devicePixelRatio;
+		        if (isIPhone) {
+		            // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
+		            if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {                
+		                dpr = 3;
+		            } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)){
+		                dpr = 2;
+		            } else {
+		                dpr = 1;
+		            }
+		        } else {
+		            // 其他设备下，仍旧使用1倍的方案
+		            dpr = 1;
+		        }
+		        scale = 1 / dpr;
+		    }
+
+		    docEl.setAttribute('data-dpr', dpr);
+		    if (!metaEl) {
+		        metaEl = doc.createElement('meta');
+		        metaEl.setAttribute('name', 'viewport');
+		        metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+		        if (docEl.firstElementChild) {
+		            docEl.firstElementChild.appendChild(metaEl);
+		        } else {
+		            var wrap = doc.createElement('div');
+		            wrap.appendChild(metaEl);
+		            doc.write(wrap.innerHTML);
+		        }
+		    }
+
+		    function refreshRem(){
+		        var width = docEl.getBoundingClientRect().width;
+		        // if (width / dpr > 540) {
+		        //     width = 540 * dpr;
+		        // }
+		        var rem = width / 37.5*5;
+		        docEl.style.fontSize = rem + 'px';
+		        flexible.rem = win.rem = rem;
+		    }
+
+		    win.addEventListener('resize', function() {
+		        clearTimeout(tid);
+		        tid = setTimeout(refreshRem, 300);
+		    }, false);
+		    win.addEventListener('pageshow', function(e) {
+		        if (e.persisted) {
+		            clearTimeout(tid);
+		            tid = setTimeout(refreshRem, 300);
+		        }
+		    }, false);
+		    win.addEventListener("orientationchange", function() {
+		        clearTimeout(timer);
+		        timer = setTimeout(setFontSize, 300);
+		    }, false);
+
+		    if (doc.readyState === 'complete') {
+		        doc.body.style.fontSize = 12 * dpr + 'px';
+		    } else {
+		        doc.addEventListener('DOMContentLoaded', function(e) {
+		            doc.body.style.fontSize = 12 * dpr + 'px';
+		        }, false);
+		    }
+		    
+
+		    refreshRem();
+
+		    flexible.dpr = win.dpr = dpr;
+		    flexible.refreshRem = refreshRem;
+		    flexible.rem2px = function(d) {
+		        var val = parseFloat(d) * this.rem;
+		        if (typeof d === 'string' && d.match(/rem$/)) {
+		            val += 'px';
+		        }
+		        return val;
+		    }
+		    flexible.px2rem = function(d) {
+		        var val = parseFloat(d) / this.rem;
+		        if (typeof d === 'string' && d.match(/px$/)) {
+		            val += 'rem';
+		        }
+		        return val;
+		    }
+
+		})(window, window['lib'] || (window['lib'] = {}));
+	</script>
+	<script>
+
+
+			/*  请求出错 全局函数 */
+			$( document ).ajaxError(function() {
+				msg('当前访问人数过多，请稍后再试');
+				$('.loading').hide();
+				$('.closeModal').text('关闭');
+				$('.closeModal').click(function(event) {
+		        	wx.closeWindow();
+	        	});
+			});
+		
+		// $('.triggerRotatea').mouseup(function(event) {
+		// 	$(this).css('width','90%');
+		// 	console.log(2);
+		// });
+			// console.log(new Date(2018,2,9,23,59,59))
+			// console.log(Date.now() < new Date(2018,2,9,23,59,59));
+
+			//中奖编号
+			var prizeCode = '';
+			if(Date.now() > new Date(2018,4,25,23,59,59)){
+		        msg('【该活动已经结束】<br>后续活动，敬请期待');
+		        // $('.mui-popup-inner:afters').css('height',0);
+		        $('.closeModal').text('');
+				$('.closeModal').click(function(event) {
+		        	// closeMsg();
+		        	return false;
+		        });
+			}else{
+				/* 点击关闭信息弹出框 */
+		        $('.closeModal').click(function(event) {
+		        	closeMsg();
+		        });
+			}
+			function msg(txt){
+				$('.mui-active').show();
+				$('.mui-popup-in').show();
+				$('.mui-popup-text').html(txt);
+			}
+			function closeMsg(){
+				$('.mui-active').hide();
+				$('.mui-popup-in').hide();
+			}
+			
+			
+			var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?79f522cf9bc45009b905e9daa8283677";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+
+			var is_shared ='';
+			/**
+				页面加载获取code
+			*/
+			function GetRequest() {
+			    var url = location.search; 
+			    var theRequest = new Object();
+			    if (url.indexOf("?") != -1) {
+			    	var str = url.substr(1);
+			    	strs = str.split("&");
+			    	for(var i = 0; i < strs.length; i ++) {
+			      		theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+			    	}
+			  	}
+			  	return theRequest;
+			}
+			
+			Request = GetRequest();
+			console.log(Request.state)
+			localStorage.setItem('entrance',Request.state)
+			/* 发送code 并返回openid*/
+			// var openid = localStorage.getItem('openId');
+			
+
+			// alert(localStorage.getItem('openId'));
+			// localStorage.removeItem('openId')
+			// alert(localStorage.getItem('openId'));
+			// localStorage.setItem('openId','')
+			if(localStorage.getItem('april_openId') ){
+
+                $.post('http://campaign.51i.cc/api/april/user/openid/'+localStorage.getItem('april_openId'),function(data, textStatus, xhr) {
+                	// 
+
+
+                	
+                	if (data.error == 0) {
+
+	                	// alert(1);
+	                	// alert('openid'+localStorage.getItem('openId'))
+						$('.count').text(data.user.chance);
+						is_shared = data.user.is_shared;
+						
+						$('.loading').hide();
+						//保存已中奖编码
+						prizeCode = data.user.prize;
+
+
+                	}else{
+                		if(data.error == 501){
+	                		msg('您还未注册成安视优会员，请前往注册。');
+	                		$('.closeModal').click(function(event) {
+					        	self.location = 'http://myacuvuewechat.51i.cc/Tools/Channelnumber/2';
+
+				        	});
+
+				        	return false;
+
+                		}
+
+                		msg('当前访问人数过多，请稍后再试');
+	                	wx.closeWindow();
+                	}
+                	localStorage.setItem('prize_code',data.user.prize)
+	                if( data.user.prize ==1 || data.user.prize == 2 || data.user.prize == 3){
+	                	self.location = 'suc.html?state='+localStorage.getItem('entrance');
+	                	console.log(data.user.prize);
+	                }
+				});
+
+
+
+			}else{
+
+				$.post('http://campaign.51i.cc/api/april/user/code/'+Request.code,{source:Request.state},function(data, status) {
+					
+                	if (data.error == 0) {
+
+	                	// if(data.error == 403){
+	                	// 	msg('当前抽奖人数过多，请稍后再试');
+	                	// 	// msg(data.message);
+	                	// }
+						// alert(2);
+	                	// alert('openid1'+localStorage.getItem('openId'))
+	                	console.log(data.user);
+						$('.count').text(data.user.chance);
+						localStorage.setItem('april_openId',data.user.openid);
+						is_shared = data.user.is_shared;
+						$('.count').text(data.user.chance);
+						is_shared = data.user.is_shared;
+						
+						$('.loading').hide();
+						//保存已中奖编码
+						prizeCode = data.user.prize;
+                	}else{
+                		if(data.error == 501){
+	                		msg('您还未注册成安视优会员，请前往注册。');
+	                		$('.closeModal').click(function(event) {
+					        	self.location = 'http://myacuvuewechat.51i.cc/Tools/Channelnumber/2';
+					        });
+
+					        return false;
+	                	}
+	                	
+	                	msg('当前访问人数过多，请稍后再试');
+	                	wx.closeWindow();
+                	}
+					localStorage.setItem('prize_code',data.user.prize)
+                	if( data.user.prize ==1 || data.user.prize == 2 || data.user.prize == 3){
+	                	self.location = 'suc.html?state='+localStorage.getItem('entrance');
+						console.log(data.user.prize);
+	                }
+				});
+
+			}
+			
+			/* 点击后显示活动细则 */
+			$('.r5').click(function(event) {
+				$('.r8').addClass('cover');
+				$('.close').show();
+			});
+			/* 点击后关闭活动细则 */
+			$('.closebtn').click(function(event) {
+				$('.r8').removeClass('cover');
+				$('.close').hide();
+			});
+			/* 分享后增加一次抽奖次数 */
+			$('.r6').click(function(event) {
+				$('.share').show();
+			});
+			
+
+			
+
+			/* 页面加载中奖人信息 */
+			// $.get('test.json', function(data, textStatus, xhr) {
+				$.get('http://campaign.51i.cc/api/april/winners', function(data, textStatus, xhr) {
+				var info = eval(data);
+				var htmlInfo = '';
+				for(i in info){
+					htmlInfo += '<li>'+
+									'<ul class="ul2">'+
+										'<li>'+info[i].phone+'</li>'+
+										'<li>抽中</li>'+
+										'<li>'+getPrizeInfo(info[i].prize)+'</li>'+
+									'</ul>'+
+								'</li>';
+					// console.log(info[i].value)
+				}
+				$('.ul1').html(htmlInfo);
+				/**
+				数据滚动
+				*/
+				$(function() {
+				    $('#example').vTicker({      
+				        speed: 700,           //滚动速度，单位毫秒。
+			            pause: 4000,            //暂停时间，就是滚动一条之后停留的时间，单位毫秒。                          
+			            showItems: 3,           //显示内容的条数。                          
+			            mousePause: true,       //鼠标移动到内容上是否暂停滚动，默认为true。                           
+			            height: '1.6rem',              //滚动内容的高度。
+			            direction: 'up',      //滚动的方向，默认为up向上，down则为向下滚动。                           
+			            animation: 'fade',    //动画效果，默认是fade，淡出。    
+			            mousePause: true      //鼠标移动到内容上是否暂停滚动，默认为true。
+				     
+				    });
+
+				});
+					
+			});
+
+			/* 返回中奖结果 */
+			function getPrizeInfo(num){
+				if(num == 1){
+					return '戴森吹风机';
+				}
+				if(num == 2){
+					return '爱奇艺季卡2张';
+				}
+				if(num == 3){
+					return '500积分';
+				}
+				return '进店体验';
+			}
+			
+			var rotateTimeOut = function (){
+
+				$('.hand').rotate({
+					angle:0,
+					animateTo:2160,
+					duration:8000,
+					callback:function (){
+						alert('网络超时，请检查您的网络设置！');
+					}
+				});
+			};
+
+			var bRotate = false;
+
+			var rotateFn = function (awards, angles, txt , prize){
+
+				bRotate = !bRotate;
+
+				$('.hand').stopRotate();
+
+				$('.hand').rotate({
+					angle:0,
+					animateTo:angles+1800,
+					duration:3000,
+					callback:function (){
+						msg(txt);
+						bRotate = !bRotate;
+						$('.mui-popup-button').click(function(event) {
+
+								console.log(awards);
+								if(awards == 0){
+									return;
+								}
+								if(awards == 1){
+									self.location='add.html?state='+localStorage.getItem('entrance'); 
+								}
+								if(awards == 2){
+									self.location='add1.html?state='+localStorage.getItem('entrance'); 
+								}
+								if(awards == 3){
+									self.location='suc.html?state='+localStorage.getItem('entrance'); 
+								}
+								// self.location='suc.html?state='+localStorage.getItem('state'); 
+								
+								// console.log(prize);
+
+						});
+					}
+				})
+			};
+			
+			
+
+
+				$('.triggerRotate').click(function (){
+					$('.triggerRotate').css('width','80%');
+					setTimeout( function(){
+						$('.triggerRotate').css('width','90%');
+					} , 300)
+
+					console.log(prizeCode)
+					if(prizeCode === 1 || prizeCode === 2 || prizeCode === 3  ){
+						msg('您已经中本次活动奖项：【'+getPrizeInfo(prizeCode)+'】，不能继续参与活动了');
+					}else{
+
+
+
+						if(bRotate)return;
+						$.post('http://campaign.51i.cc/api/april/user/'+localStorage.getItem('april_openId')+'/draw', function(data, textStatus, xhr, prize) {
+							// $.get('test.json', function(data, textStatus, xhr, prize) {
+							if(data.error == 501){
+		                		msg('您还未注册成安视优会员，请前往注册。');
+		                		$('.closeModal').click(function(event) {
+						        	self.location = 'http://myacuvuewechat.51i.cc/Tools/Channelnumber/2';
+						        });
+		                	}
+		                	if(data.error == 400){
+		                		msg('error mssage: no code');
+		                	}
+		                	if(data.error == 403){
+		                		msg('当前抽奖人数过多，请稍后再试');
+		                		// msg(data.message);
+		                	}
+								// console.log(data);
+								var count =  parseInt($('.count').html());
+								if(count < 1 ){
+							        msg('抱歉！您目前没有抽奖次数了，' +( (is_shared == 1) ? '明天还可以继续抽奖哦~' : '将抽奖页面发给好友或发到朋友圈将获得额外1次抽奖机会。每人每天仅可分享1次。') ) ;
+							        // msg('您没有抽奖次数了！');
+							        return false;
+							    }else{
+							    	$('.count').html(data.chance);
+							    }
+							    _hmt.push(['_trackEvent', '点击抽奖', '点击', Request.state , '' ]);
+								// var item = rnd(0,3);
+								localStorage.setItem('prize_code',data.prize_code);
+								switch (data.prize_code) {
+									case 0:
+										msg('抱歉！您目前没有抽奖次数了，' +( (is_shared == 1) ? '明天还可以继续抽奖哦~' : '将抽奖页面发给好友或发到朋友圈将获得额外1次抽奖机会。每人每天仅可分享1次。') ) ;
+										// msg('您没有抽奖次数了！');
+										break;
+									case 1:
+										rotateFn(1, 0, '恭喜您获得一等奖，戴森吹风机！点击确定去填写收货信息领取大奖啦~','戴森吹风机');
+										break;
+									case 2:
+										rotateFn(2, 180, '恭喜您获得二等奖，爱奇艺季卡2张！点击确定去填写收货信息领取大奖啦~','爱奇艺季卡2张');
+										break;
+									case 3:
+										rotateFn(3, 90, '恭喜您获得三等奖，500积分！','500积分');
+										break;
+									case 4:
+										rotateFn(0, 270, '亲爱的会员，恭喜您获得预约进店体验机会一次！');
+										break;
+									case 5:
+										msg('您已经中本次活动奖项：【'+getPrizeInfo(data.prize)+'】，不能继续参与活动了');
+				                        break;
+								}
+						})
+					}
+
+
+					
+					// console.log(item);
+				});
+			
+		
+
+			
+	        /* 微信分享 */
+			/*---------------------      分享渠道 entrance15   --------------------   */
+	 		wx.ready(function(){
+			        // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+			        wx.onMenuShareAppMessage({
+
+			            title: '安视优®好礼', // 分享标题
+			            desc: '立即点击抽取您的4月安视优好礼-戴森吹风机!', // 分享描述
+			            link: 'http://wechat.51i.cc/campaign/april/entrance15.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+			            imgUrl: 'http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/share.jpg', // 分享图标
+			            type: 'link', // 分享类型,music、video或link，不填默认为link
+			            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+			            success: function () {
+			                $('.share').hide()
+			                
+			                if(is_shared == 0){
+			                    $.post('http://campaign.51i.cc/api/april/user/'+localStorage.getItem('april_openId')+'/share',function(data){
+			                    	// console.log(data);
+			                        if(data.error == 0){
+			                            is_shared = 1
+			                            $('.count').html(data.chance)
+			                            msg('分享成功,赠送您一次抽奖机会~')
+			                        }else{
+			                            msg('您已中奖或今天已分享过啦~')
+			                        }
+			                        _hmt.push(['_trackEvent', '分享给朋友', '点击', Request.state , '' ]);
+			                    })
+			                }else{
+			                    msg('您已中奖或今天已分享过啦~')
+			                }
+			            },
+			            cancel: function () {
+			                $('.share').hide()
+			            }
+
+			        });
+			        wx.onMenuShareTimeline({
+			            title: '立即点击抽取您的4月安视优好礼-戴森吹风机！', // 分享标题
+			            link: 'http://wechat.51i.cc/campaign/april/entrance15.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+			//            imgUrl: 'http://ww2.sinaimg.cn/large/0060lm7Tly1fmrwmfg72pj30ku0d7762.jpg', // 分享图标
+			            imgUrl: 'http://lucky-draw.oss-cn-beijing.aliyuncs.com/april/share.jpg', // 分享图标
+			            success: function () {
+			                $('.share').hide()
+			                if(is_shared == 0){
+			                    $.post('http://campaign.51i.cc/api/april/user/'+localStorage.getItem('april_openId')+'/share',function(data){
+			                    	// console.log(data);
+			                        if(data.error == 0){
+			                            is_shared = 1
+			                            $('.count').html(data.chance)
+			                            msg('分享成功,赠送您一次抽奖机会~')
+			                        }else{
+			                            msg('您已中奖或今天已分享过啦~')
+			                        }
+			                        _hmt.push(['_trackEvent', '分享朋友圈', '点击', Request.state , '' ]);
+			                    })
+			                }else{
+			                    msg('您已中奖或今天已分享过啦~')
+			                }
+			            },
+			            cancel: function () {
+			                $('.share').hide()
+			            }
+			        });
+		    })
+		    wx.error(function(res){
+		    		alert(res);
+				    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+
+		});
+	</script>
+</body>
+</html>

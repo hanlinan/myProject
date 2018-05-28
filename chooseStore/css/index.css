@@ -1,0 +1,115 @@
+body{
+	font-size: 0.24rem;
+	background: #f2f2f2;
+}
+div.r1,
+div.r2,
+div.r3{
+	width: 90%;
+	margin: 20px auto 0;
+	overflow: hidden;
+	position: relative;
+}
+
+div.r1 #prov {
+    color: #666666;
+    height: 40px;
+    border: 1px solid #aaaaaa;
+	width: 55%;
+    border-radius: 4px;
+}
+div.r1 #city {
+	width: 40%;
+    color: #666666;
+    height: 40px;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    float: right;
+}
+div.r2 select{
+	width: 100%;
+}
+div.r2 select,
+div.r3 div{
+    color: #666666;
+    height: 40px;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+}
+div.r3{
+	background: #fff;
+}
+div.r3 div input{
+	border: 0;
+	height: 40px;
+	padding: 0;
+	width: 80%;
+	border-radius: 4px;
+}
+div.r3 div span{
+	font-size: 16px;
+	font-weight: 550;
+	color: #000;
+}
+div.r3 div img{
+	position: absolute;
+	top: 0.1rem
+}
+div.r4{
+    height: 250px;
+    width: 100%;
+    margin: 20px auto 0px;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    background-color: rgb(243, 241, 236);
+    color: rgb(0, 0, 0);
+    text-align: left;
+}
+img.mark{
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+}
+div.store{
+	width: 100%;
+	background: #fff;
+}
+div.storeList{
+	position: relative;
+	width: 80%;
+	border-bottom: 1px solid #ddd;
+	margin: 0 auto;
+	overflow: hidden;
+	height: 110px;
+	display: flex;
+	justify-content: center;
+}
+div.storeList img{
+	height: 100%;
+	float: left;
+}
+div.storeList ul{
+	float: left;
+	width: 65%;
+	list-style: none;
+	height: 80%;
+	line-height: 100%;
+	padding-left: 20px;
+	margin: 0;
+	margin-top: 6%;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+div.storeList ul li{
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+}
+.text-color{
+	color: #00a3e0;
+	font-weight: 550;
+}
+img{ 
+	pointer-events: none; 
+}

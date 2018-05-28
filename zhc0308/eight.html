@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+
+	<title>你与张总只差这一眼</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,
+		body{
+			width: 100%;
+			height: 100%;
+		}
+		body{
+			background-image: url(img/8.jpg);
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			position: relative;
+			color: #fff;
+		}
+		div{
+			position: absolute;
+			bottom: 1rem;
+			text-align: center;
+		}
+
+		div img.cong{
+			width: 90%;
+			margin-bottom: 0.48rem;
+		}
+		div img.code{
+			width: 45%;
+			margin-bottom: 1.5rem;
+		}
+		div img.share{
+			width: 50%;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="img/cong.png" alt="" class="cong">
+		<img src="img/code.png" alt="" class="code">
+		<br>
+		<img src="img/share.png" alt="" class="share">
+	</div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://wechat.51i.cc/WeiXinSDK/WeiXinBase.aspx"  type="text/javascript"></script>
+	<script src="js/wechatShare.js"></script>
+    <script>
+    	$(document).ready(function() {
+    		$('.share').click(function(event) {
+    			location.href='ten.html';
+    		});
+    	});
+    </script>
+</body>
+</html>

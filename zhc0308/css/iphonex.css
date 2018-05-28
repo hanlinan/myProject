@@ -1,0 +1,16 @@
+/*
+@media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
+    body{
+    	top: 
+    }
+}*/
+@media only screen and (width: 375px) and (min-height: 690px){
+    div {
+        margin-bottom: 110px;
+    }
+    body{
+    	background-size: contain;
+    	background-position: top;
+    	background-color: #e6e8e7;
+    }
+}

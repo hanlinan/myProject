@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+	<link href="https://pmicdn.oss-cn-beijing.aliyuncs.com/css/normalize.css" rel="stylesheet">
+	<title>安视优，点亮精致生活</title>
+	<style>
+		html,body{
+			width: 100%;
+			height: 100vh;
+		}
+		body{
+			position: relative;
+		    background-image: url("https://bdactivity.oss-cn-hangzhou.aliyuncs.com/may_db/shoup_cover.jpg");
+		    background-position:  bottom right;
+		    background-repeat:  no-repeat;
+		    background-size: cover;
+		}
+		img{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	
+	<img src="" alt="">
+	<!---->
+
+    <script src="https://pmicdn.oss-cn-beijing.aliyuncs.com/js/jquery.min.js"></script>
+    <script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?fbca1df5e7843927bdcc8b2156e4cdb4";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+	<script>
+		function GetRequest() {
+		    var url = location.search; 
+		    var theRequest = new Object();
+		    if (url.indexOf("?") != -1) {
+		    	var str = url.substr(1);
+		    	strs = str.split("&");
+		    	for(var i = 0; i < strs.length; i ++) {
+		      		theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+		    	}
+		  	}
+		  	return theRequest;
+		}
+		
+		Request = GetRequest();
+		sessionStorage.setItem('Source',Request.state);
+
+		var imgSrc = 'https://bdactivity.oss-cn-hangzhou.aliyuncs.com/may_db/shoup01.gif?'+Date.now();
+		$('img').attr('src',imgSrc);
+		$('img').on('load',function(){
+			console.log('gif加载完毕');
+			$('body').css('background-image','url('+imgSrc+')');
+			setTimeout(function(args) {
+				location.href="application.html?state="+Request.state;
+			}, 2000);
+		});
+
+	</script>
+</body>
+</html>

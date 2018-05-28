@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面跳转中...</title>
+	<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<script>
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?79f522cf9bc45009b905e9daa8283677";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+
+	</script>
+	<!-- <style>
+		html{
+			height: 100%;
+		}
+		html,
+		body{
+			/*height: 100%;*/
+			margin: 0;
+			padding: 0;
+		}
+	</style> -->
+</head>
+<body>
+
+
+	<script language="JavaScript">
+			
+		    
+		    if(localStorage.getItem('april_openId')){
+				self.location = 'index.html?state=entrance15';
+			}else{
+	          // self.location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxab9c2b89f342429d&redirect_uri=http%3A%2F%2Fwechat.51i.cc/campaign/feb/index.html&response_type=code&scope=snsapi_base';
+	            self.location='http://wechat.51i.cc/get-weixin-code.html?appid=wxab9c2b89f342429d&scope=snsapi_base&state=entrance15&redirect_uri=http%3A%2F%2Fwechat.51i.cc/campaign/april/index.html';
+			}
+		</script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+	<link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/index.css">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<div id="app2">
+			
+		
+			<div class="r1">
+				<select class="prov" se="prov" id="prov" name="select-prov" @change="getCity($event)">
+		            <option>市</option>
+	                <option value="鞍山">鞍山</option>
+	                <option value="北京">北京</option>
+	                <option value="长春">长春</option>
+	                <option value="长沙">长沙</option>
+	                <option value="常熟">常熟</option>
+	                <option value="常州">常州</option>
+	                <option value="成都">成都</option>
+	                <option value="崇州">崇州</option>
+	                <option value="大连">大连</option>
+	                <option value="丹东">丹东</option>
+	                <option value="德阳">德阳</option>
+	                <option value="东莞">东莞</option>
+	                <option value="都江堰">都江堰</option>
+	                <option value="佛山">佛山</option>
+	                <option value="福州">福州</option>
+	                <option value="广州">广州</option>
+	                <option value="哈尔滨">哈尔滨</option>
+	                <option value="邯郸">邯郸</option>
+	                <option value="杭州">杭州</option>
+	                <option value="合肥">合肥</option>
+	                <option value="衡水">衡水</option>
+	                <option value="昆明">昆明</option>
+	                <option value="昆山">昆山</option>
+	                <option value="兰州">兰州</option>
+	                <option value="乐山">乐山</option>
+	                <option value="泸州">泸州</option>
+	                <option value="眉山">眉山</option>
+	                <option value="绵阳">绵阳</option>
+	                <option value="南昌">南昌</option>
+	                <option value="南充">南充</option>
+	                <option value="南京">南京</option>
+	                <option value="南宁">南宁</option>
+	                <option value="宁波">宁波</option>
+	                <option value="青岛">青岛</option>
+	                <option value="上海">上海</option>
+	                <option value="深圳">深圳</option>
+	                <option value="沈阳">沈阳</option>
+	                <option value="石家庄">石家庄</option>
+	                <option value="苏州">苏州</option>
+	                <option value="太原">太原</option>
+	                <option value="天津">天津</option>
+	                <option value="桐乡">桐乡</option>
+	                <option value="温州">温州</option>
+	                <option value="无锡">无锡</option>
+	                <option value="武汉">武汉</option>
+	                <option value="西安">西安</option>
+	                <option value="西昌">西昌</option>
+	                <option value="厦门">厦门</option>
+	                <option value="徐州">徐州</option>
+	                <option value="扬州">扬州</option>
+	                <option value="宜宾">宜宾</option>
+	                <option value="郑州">郑州</option>
+	                <option value="中山">中山</option>
+	                <option value="重庆">重庆</option>
+	                <option value="珠海">珠海</option>
+	            </select>
+
+		        </select>
+				<select  class="city" se="city" id="city"  name="select-city" @change="getCityAndArea($event)" >
+		            <option>区</option>
+		            <option :value="item" v-for="item in cityList">{{ item }}</option>
+		        </select>
+			</div>
+			<div class="r2">
+				<select  class="dist" se="dist" id="dist" name="select-dist">
+		            <option>所有眼镜店</option>
+		            <option :value="item" v-for="item in cityAndArea">{{ item }}</option>
+		            
+
+		        </select>
+			</div>
+			<div class="r3">
+				<div>
+					<input type="text" placeholder="*输入眼镜店搜索">
+					<span>搜索
+						<img src="https://bdactivity.oss-cn-hangzhou.aliyuncs.com/publicImg/search.png" alt=""></span>
+				</div>
+			</div>
+		</div>
+		<div class="r4" id="allmap">
+			
+		</div>
+		<img class="mark" src="http://myacuvuewechat.51i.cc/Content/images/color.jpg" alt="">
+		<div class="store" id="app">
+			<div class="storeList" v-for="item in NearbyShopList" 
+			@click="openLocation(item.Latitude,item.Longitude,item.StoreName,item.Addr)">
+				<img :src="'http://myacuvuewechat.51i.cc/Content/images/map-'+ item.StoreRank +'.jpg'" alt="">
+				<ul>
+					<li class="text-color">
+						{{ item.StoreName }}
+					</li>
+					<li>
+						{{ item.Addr }}
+					</li>
+					<li>
+						{{ item.TelD2 }}
+					</li>
+				</ul>
+				<img src="http://myacuvuewechat.51i.cc/Content/images/dot.jpg" alt="" >
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://api.map.baidu.com/getscript?v=2.0&ak=Bdv6Lcxatvj3OrNjveRUuksCGwhZcUKm&services=&t=20180427194914"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+	<script src='js/public.js'></script>
+	<script src="js/selectCity.js"></script>
+	<script>
+		//
+			var lng = 116.404;
+			var lat = 39.915;
+			// 百度地图API功能
+			var map = new BMap.Map("allmap");    // 创建Map实例
+			map.centerAndZoom(new BMap.Point(lng, lat), 15);  // 初始化地图,设置中心点坐标和地图级别
+			//添加地图类型控件
+			map.addControl(new BMap.MapTypeControl({
+				mapTypes:[
+		            BMAP_NORMAL_MAP,
+		            BMAP_HYBRID_MAP
+		        ]}));	  
+			map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+			map.enableScrollWheelZoom(true);
+			var geolocation = new BMap.Geolocation();
+		    geolocation.getCurrentPosition(function(r){
+		        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+		            var mk = new BMap.Marker(r.point);
+		            lng = r.point.lng;
+		            lat = r.point.lat;
+		            loadNearStore(lng,lat);
+		            map.addOverlay(mk);
+		            map.panTo(r.point);
+		        }
+		        else {
+		            alert('failed'+this.getStatus());
+		        }
+		    },{enableHighAccuracy: true})
+	        
+
+	        /**/
+	        function loadNearStore(lng,lat){
+	        	// console.log(lng+''+lat);
+	        }
+	        window.load = function(){
+	        	
+	        }
+        new Vue({
+        	el:'#app2',
+        	data () {
+				return {
+			      NearbyShopList : [],
+			      cityList : [],
+			      cityAndArea : []
+			    }
+		    },
+        	methods : {
+			    getCity(event){
+			    	console.log(event.target.value);
+			    	let self = this;  
+			    	axios.post('area.json',{
+			    		Area : event.target.value
+			    	}).then(function(res){
+			    		self.cityList = res.data.AreaList;
+			    		// self.createMark(self.NearbyShopList)
+			    		console.log(self.cityList);
+			    	}, (err) => {
+				      console.log(err)
+				    });
+			    },
+			    getCityAndArea(event){
+                    console.log(event.target.value);
+                    let self = this;  
+                    axios.post('cityArea.json',{
+                        Area : event.target.value
+                    }).then(function(res){
+                    	self.cityAndArea.length = 0;
+                    	for(var i = 0;i < res.data.NearbyShopList.length;i++){
+                    		console.log(res.data.NearbyShopList[i].StoreName);
+                    		self.cityAndArea.push (res.data.NearbyShopList[i].StoreName)
+                    	}
+                        console.log(self.cityAndArea);
+                    }, (err) => {
+                      console.log(err)
+                    });
+                }
+			    
+        	}
+
+        })
+		new Vue({
+			el: '#app',  
+			data () {
+				return {
+			      center: {
+			      	lng:116.404, 
+			      	lat: 39.915
+			      },
+			      NearbyShopList : [],
+			      point : [],
+			      city : []
+			    }
+		    },
+		    methods : {
+			    createMark (nearbyShopList){
+					// 随机向地图添加标注
+					var bounds = map.getBounds();
+					var sw = bounds.getSouthWest();
+					var ne = bounds.getNorthEast();
+					for (let i = 0; i < nearbyShopList.length; i ++) {
+						var point = new BMap.Point(nearbyShopList[i].Longitude, nearbyShopList[i].Latitude);
+							var content = {
+								'storeName' : nearbyShopList[i].StoreName,
+								'storeAddt' : nearbyShopList[i].Addr,
+								'storeTell' : nearbyShopList[i].TelD2
+							};
+						// var markerArr = this.NearbyShopList;
+			    	      //   var json = markerArr[i];
+								// //这个地方加this
+						  //       var iw = this.createInfoWindow(i);
+						  //       //这个地方加this
+						  //       var _iw = this.createInfoWindow(i);
+						  //       var _marker = marker;
+								this.addMarker(point,content,i);
+								// iw.addEventListener("open",function(){
+						  //           _marker.getLabel().hide();
+						  //           console.log(2);
+						  //       })
+				        
+					}
+				},
+				addMarker(point,content,i){
+				    // 编写自定义函数,创建标注
+				    // var marker = new BMap.Marker(point);
+
+				    // map.addOverlay(marker);
+					//创建小狐狸
+					var myIcon = new BMap.Icon("http://myacuvuewechat.51i.cc/Content/images/dot.png", new BMap.Size(40,40));
+					var marker2 = new BMap.Marker(point,{icon:myIcon});  // 创建标注
+					map.addOverlay(marker2);      // 将标注添加到地图中
+					// console.log(point);
+					// this.addClickHandler(content,marker2);
+					// var content ="天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门...";
+					console.log(content);
+					var contentList ="<b>"+ content.storeName+"</b></br></br>"+content.storeAddt+"</br></br>"+content.storeTell;
+					var infoWindow = new BMap.InfoWindow(contentList);  // 创建信息窗口对象
+					
+					marker2.addEventListener('click',function(){
+    					map.openInfoWindow(infoWindow,point); //开启信息窗口
+						// document.getElementById("r-result").innerHTML = infoWindow.getContent();
+				        	
+						
+					});
+				},
+				openLocation(Latitude, Longitude, StoreName, Addr) {
+					console.log(Latitude+':'+Longitude+':'+StoreName+':'+Addr);
+			        wx.openLocation({
+			            latitude: Latitude, // 纬度，浮点数，范围为90 ~ -90
+			            longitude: Longitude, // 经度，浮点数，范围为180 ~ -180。
+			            name: StoreName, // 位置名
+			            address: Addr, // 地址详情说明
+			            scale: 15, // 地图缩放级别,整形值,范围从1~28。默认为最大
+			            infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+			        });
+			    },
+			    openInfo(content,e){
+			    	var opts = {
+						width : 250,     // 信息窗口宽度
+						height: 80,     // 信息窗口高度
+						title : "" , // 信息窗口标题
+						enableMessage:true//设置允许信息窗发送短息
+				    };
+					var p = e.target;
+					var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+					var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+					map.openInfoWindow(infoWindow,point); //开启信息窗口
+				},
+				addClickHandler(content,marker){
+					// console.log(marker);
+					// console.log(content);
+					// marker.addEventListener("click",function(e){
+					// 	this.openInfo(content,e)}
+					// );
+					// marker.addEventListener('click',function(){
+	    			// 		alert();
+					// });
+				}
+
+		    },
+		    created :function(){
+		    	let self = this;  
+		    	axios.get('db.json',{
+		    		Longitude : this.center.lng,
+		    		Latitude :this.center.lat
+		    	}).then(function(res){
+		    		self.NearbyShopList = res.data.NearbyShopList;
+		    		self.createMark(self.NearbyShopList)
+		    		console.log(self.NearbyShopList);
+		    	}, (err) => {
+			      console.log(err)
+			    });
+		    }
+
+		})
+
+
+	</script>
+</body>
+</html>

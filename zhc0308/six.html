@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+
+	<title>天才暖男作家—-张皓宸已上</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,
+		body{
+			width: 100%;
+			height: 100%;
+		}
+		body{
+			background-image: url(http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/6.jpg);
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: relative;
+			color: #fff;
+		}
+		div.button{
+			position: absolute;
+		    bottom: 5%;
+		    width: 40%;
+		    /*padding-left: 5%;*/
+		    right: 2%;
+		}
+		img{
+			width: 100%;
+		}
+		@media only screen and (width: 375px) and (min-height: 690px){
+		    
+		    body{
+		    	background-image: url(http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/6-x.jpg);
+				background-repeat: no-repeat;
+				background-size: cover;
+		    }
+		}
+		@media only screen and (width: 411px) and (min-height: 823px){
+		    
+		    body{
+		    	background-image: url(http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/6-x.jpg);
+				background-repeat: no-repeat;
+				background-size: cover;
+		    }
+		}
+	</style>
+</head>
+<body>
+	
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    	$(document).ready(function() {
+    		$("body").on("touchstart", function(e) {
+			    // 判断默认行为是否可以被禁用
+			    if (e.cancelable) {
+			        // 判断默认行为是否已经被禁用
+			        if (!e.defaultPrevented) {
+			            e.preventDefault();
+			        }
+			    }   
+			    startX = e.originalEvent.changedTouches[0].pageX,
+			    startY = e.originalEvent.changedTouches[0].pageY;
+			});
+			$("body").on("touchend", function(e) {         
+			    // 判断默认行为是否可以被禁用
+			    if (e.cancelable) {
+			        // 判断默认行为是否已经被禁用
+			        if (!e.defaultPrevented) {
+			            e.preventDefault();
+			        }
+			    }               
+			    var clientWidth=document.documentElement.clientWidth;
+			    moveEndX = e.originalEvent.changedTouches[0].pageX,
+			    moveEndY = e.originalEvent.changedTouches[0].pageY,
+			    X = moveEndX - startX,
+			    Y = moveEndY - startY;
+			    //左滑
+			    if ( Math.abs(X)>clientWidth*0.2 && X >0 ) {
+			        location.href="five.html";              
+			    }
+			    //右滑
+			    // if ( X < 0 ) {
+			    //     location.href="third.html"; 
+			    //     alert('右滑');   
+			    // }
+			    //下滑
+			    // else if ( Y > 0) {
+			    //     alert('下滑');    
+			    // }
+			    //上滑
+			    // else if ( Y < 0 ) {
+			    //     alert('上滑');    
+			    // }
+			    //单击
+			    // else{
+			    //     alert('单击');    
+			    // }
+			});
+    	});
+    </script>
+</body>
+</html>

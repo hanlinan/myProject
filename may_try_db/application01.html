@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+	<link href="https://pmicdn.oss-cn-beijing.aliyuncs.com/css/normalize.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/application.css">
+	<title>安视优，点亮精致生活</title>
+	
+</head>
+<body>
+	<img class="bg" src="https://bdactivity.oss-cn-hangzhou.aliyuncs.com/may_db/try_bg.jpg" alt="">
+	<div class="form" id="form">
+		<form action=""  id="frmTrial" method="post">
+			<div class="check">
+				<a href="application_details.html">
+					<img src="https://bdactivity.oss-cn-hangzhou.aliyuncs.com/may_db/check.png" alt="">
+				</a>
+			</div>
+			<div class="r1">
+				<span><img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/user.png" alt=""></span>
+				<input type="text" placeholder="填写姓名" name="username">
+			</div>
+			<div class="r1">
+				<span><img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/phone.png" alt=""></span>
+				<input type="text" placeholder="填写手机" name="mobile">
+			</div>
+			<div class="r1">
+				<span><img class="product" src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/product.png" alt=""></span>
+			
+				<select  name="select-Product" id="select-Product" @change="getProv($event)">
+                    <option value="0">选择体验产品</option>
+                    <option value="15">美瞳<sup>&reg;</sup>+恒润氧<sup>&reg;</sup></option>
+                    <option value="10">美瞳<sup>&reg;</sup>+欧舒适<sup>&reg;</sup></option>
+                    <option value="14">美瞳<sup>&reg;</sup>+舒日散光<sup>&reg;</sup></option>
+                    <option value="18">美瞳<sup>&reg;</sup>+欧舒适散光<sup>&reg;</sup></option>
+                </select>
+			</div>
+			<div id="city">
+
+				<div class="r1">
+					<span><img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/build.png" alt=""></span>
+					
+					<select class="prov" se="prov" id="prov" name="select-prov" @change="getCity($event)" v-model="prov">
+	                    <option>选择城市</option>
+	                    <option :value="item.p" v-for="item in provList">{{ item.p }}</option>
+	                    
+	                </select>
+				</div>
+				<div class="r1">
+					<span><img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/add.png" alt=""></span>
+					
+					<select  class="city" se="city" id="city"  name="select-city" @change="getStore($event)" v-model="city">
+	                    <option selected>选择区域</option>
+	                    <option :value="item.n" v-for="item in cityList">{{ item.n }}</option>
+	                    
+	                </select>
+				</div>
+				<div class="r1">
+					<span><img src="http://bdactivity.oss-cn-hangzhou.aliyuncs.com/bd0308/store.png" alt=""></span>
+					
+					<select  class="dist" se="dist" id="dist" name="select-dist" v-model="store">
+	                    <option selected>选择门店</option>
+	                    <option :value="item.s" v-for="item in storeStore">{{ item.s }}</option>
+	                    
+	                </select>
+				</div>
+			</div>
+			<div class="r1 checkbox1">
+				<span  class="checkbox" for="checkbox_check1"><input type="checkbox" id="checkbox_check1"></span>
+				<p>您参与本试戴活动视为您已许可强生安视优 获取并使用您在活动中所提交的一切信息</p>
+			</div>
+			<div class="r1 checkbox2" for="checkbox_check2">
+				<span  class="checkbox"><input type="checkbox" id="checkbox_check2"></span>
+				<p>您已认真阅读活动详情，并了解活动规则</p>
+			</div>
+			<div class="sub"  id="fromsubmit">
+			</div>
+			
+		</form>
+
+	</div>
+    <div class="remLoadBeforeBg">
+	</div>
+    <script src="https://pmicdn.oss-cn-beijing.aliyuncs.com/js/jquery.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://wechat.51i.cc/WeiXinSDK/WeiXinBase.aspx"  type="text/javascript"></script>
+	<script src="js/wechatShare0504.js"></script>
+	<script src='https://pmicdn.oss-cn-beijing.aliyuncs.com/js/public.js'></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="js/application.js"></script>
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?fbca1df5e7843927bdcc8b2156e4cdb4";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+    <script>
+    	
+    </script>
+</body>
+</html>
