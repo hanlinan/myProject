@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>children's day</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+	<link href="https://pmicdn.oss-cn-beijing.aliyuncs.com/css/normalize.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://pmicdn.oss-cn-beijing.aliyuncs.com/css/animate.css">
+	<style>
+		html,body{
+			width: 100%;
+			height: 100vh;
+			font-size: 62.5%;
+			margin:0px;
+			padding:0px;
+		}
+	    body{
+			background: url(img1/bg.jpg) no-repeat;
+			background-size: cover;
+	    	font-size: 0.24rem;
+	    }
+		div.cover{
+			position: fixed;
+			width: 100%;
+			height: 100vh;
+			top:0;
+			left: 0;
+			z-index: 10;
+			background: #000;
+			display: none;
+		}
+		.qiqiu{ position:fixed; width:100px; }
+		.qiqiu div{ 
+			width:50px; 
+			height:50px; 
+			background:url(img/730e0cf3d7ca7bcbbc1b79c0bf096b63f724a8f9.png) no-repeat center center; 
+			padding:15px 5px 0; 
+			text-align:center; 
+			margin:0 auto; 
+			background-size:100% auto;
+			box-sizing: border-box;
+		}
+		.qiqiu img{ width:50%; height:auto; display:block;margin: 0 auto;}
+
+		.qiqiu1{ bottom:-200px; left:9%;animation: myfirst 20s linear infinite; z-index:2222;animation-delay:0s;-webkit-animation: myfirst 20s linear infinite; z-index:2222;-webkit-animation-delay:0s; }
+		.qiqiu2{ bottom:-200px; left:28%;animation: myfirst2 22s 1s linear infinite;animation-delay:2s;width:70px;-webkit-animation: myfirst2 22s 1s linear infinite;-webkit-animation-delay:2s;}
+		.qiqiu3{ bottom:-200px; left:48%;animation: myfirst3 22.2s linear infinite; z-index:2222;animation-delay:3s;-webkit-animation: myfirst3 22.2s linear infinite;-webkit-animation-delay:3s; }
+		.qiqiu4{ bottom:-200px; left:60%;animation: myfirst4 21s 0.2s linear infinite; z-index:2222;animation-delay:5s;-webkit-animation: myfirst4 21s 0.2s linear infinite;-webkit-animation-delay:5s; }
+		.qiqiu5 div{ width:50px; height:55px; padding: 10px 5px 0; margin:0 auto}
+		.qiqiu2 div{ width:60px; height:65px; padding: 10px 5px 0; margin:0 auto}
+
+		.qiqiu5{ bottom:-200px; left:80%;animation: myfirst5 19.5s 1.2s linear infinite;animation-delay:4s;width:60px;}
+		@keyframes myfirst
+		{
+		from {bottom: -200px;}
+		to {bottom: 800px;}
+		}
+		@keyframes myfirst2
+		{
+		from {bottom: -200px;}
+		to {bottom: 850px;}
+		}
+		@keyframes myfirst3
+		{
+		from {bottom: -200px;}
+		to {bottom: 820px;}
+		}
+		@keyframes myfirst4
+		{
+		from {bottom: -200px;}
+		to {bottom: 780px;}
+		}
+		@keyframes myfirst5
+		{
+		from {bottom: -200px;}
+		to {bottom: 830px;}
+		}
+		@keyframes myfirst6
+		{
+		from {left: 1060px;}
+		to {left: 1250px;}
+		}
+		@keyframes myfirst7
+		{
+		from {left: 180px;}
+		to {left: 400px;}
+		}
+		@keyframes myfirst8
+		{
+		from {left: 50px;}
+		to {left: 350px;}
+		}
+		@keyframes myfirst9
+		{
+		from {left: 762px;}
+		to {left: 1000px;}
+		}
+		@-webkit-keyframes myfirst
+		{
+		from {bottom: -200px;}
+		to {bottom: 800px;}
+		}
+		@-webkit-keyframes myfirst2
+		{
+		from {bottom: -200px;}
+		to {bottom: 850px;}
+		}
+		@-webkit-keyframes myfirst3
+		{
+		from {bottom: -200px;}
+		to {bottom: 820px;}
+		}
+		@-webkit-keyframes myfirst4
+		{
+		from {bottom: -200px;}
+		to {bottom: 780px;}
+		}
+		@-webkit-keyframes myfirst5
+		{
+		from {bottom: -200px;}
+		to {bottom: 830px;}
+		}
+		@-webkit-keyframes myfirst6
+		{
+		from {left: 1060px;}
+		to {left: 1250px;}
+		}
+		@-webkit-keyframes myfirst7
+		{
+		from {left: 180px;}
+		to {left: 400px;}
+		}
+		@-webkit-keyframes myfirst8
+		{
+		from {left: 50px;}
+		to {left: 350px;}
+		}
+		@-webkit-keyframes myfirst9
+		{
+		from {left: 762px;}
+		to {left: 1000px;}
+		}
+		div.p{
+			text-align: center;
+		}
+		/*  文字跳动核心样式 */
+		.beat-char {
+		    line-height: 2em;
+		    position: relative;
+			display: inline-block;
+			background: transparent;
+		}
+		.rotate{
+			transform:rotate(360deg) ;
+			-ms-transform:rotate(360deg); 	/* IE 9 */
+			-moz-transform:rotate(360deg); 	/* Firefox */
+			-webkit-transform:rotate(360deg); /* Safari 和 Chrome */
+			-o-transform:rotate(360deg);
+			-webkit-transition-duration: 0.7s;
+		}
+		/* 页面样式 */
+		div.container{
+    		margin-top: 3rem;
+		}
+		/* p1 */
+		div.p1{
+			text-align: right;
+		}
+		.p1 h2{
+			text-align: center;
+		}
+		.p1 img{
+			width: 30%;
+		}
+		/*btn style*/
+		button{
+		    height: 0.5rem;
+		    background: rgba(240, 255, 212, 0.5);
+		    border: 1px solid #efb0df;
+		    margin-bottom: 0.2rem;
+		}
+		div.content{
+			overflow: hidden;
+		    margin-top: 0.2rem;
+		    position: relative;
+		}
+		div.p2{
+			float: left;
+			width: 50%;
+		}
+		div.p2 img{
+			width: 50%;
+		}
+		div.p3{
+			float: left;
+			width: 50%;
+		}
+		div.p3 img{
+			width: 50%;
+		}
+		p{
+			font-size: 0.32rem;
+		}
+		.four,
+		.five,
+		.six,
+		.seven,
+		.eight,
+		.nine,
+		.ten,
+		.eleven,
+		.twelve,
+		.thirteen,
+		.fourteen,
+		.fifteen,
+		.sixteen,
+		.seventeen{
+			width: 40%;
+		}
+		#todayTitle{
+			font-size: 0.38rem;
+			color: #f00;
+		}
+		p{
+			line-height: 1.5;
+		}
+		p.happiness{
+		    color: #435fec;
+    		font-size: 0.36rem;
+		}
+		.dc{
+			color:#ff5512; 
+		}
+		.hl{
+			color: #0eff00;
+		}
+		.bl{
+			color: #c306ff;
+		}
+		.yy{
+			color:#6cff00;
+		}
+		.clickImg{
+			position: fixed;
+			bottom:10%;
+			left: 0;
+			text-align: center;
+			width: 2rem;
+			height: 0.5rem;
+			line-height: 0.5rem;
+			background: rgba(255,255,255,.5);
+			color: #f00;
+		}
+	</style>
+</head>
+<body>
+	<div class="clickImg">持续点击图片哦！</div>
+	<div class="container">
+		<div class="p p1">
+			<h2 id="todayTitle">今天是六一儿童节哎~</h2>
+			<img class="one" src="img1/1.jpg" alt="">
+		</div>
+		<div class="p content">
+			<div class="p2">
+				<button class="textRotate ">是本宝宝的节日</button>
+				<br>
+				<img src="img1/2.jpg" alt="">
+			</div>
+			<div class="p3">
+				<button class="textRotate ">多大了，过什么六一！</button>
+				<br>
+				<img src="img1/3.jpg" alt="">
+			</div>
+		</div>
+	</div>
+	<div class="cover">
+		
+	</div>
+	<!--  -->
+		<div class="qiqiu1 qiqiu">
+	    	<img src="img/201101asdsaf22135412367.png"/>
+	        <!-- <div class="text">小雪最美</div> -->
+	    </div>
+	    	<div class="qiqiu2 qiqiu">
+	    	<img src="img/201101ddd22135412367.png"/>
+	        <!-- <div class="text">小雪最可爱</div> -->
+	    </div>
+	    	<div class="qiqiu3 qiqiu">
+	    	<img src="img/20110122135aaaaa412367.png"/>
+	        <!-- <div class="text">小雪最厉害</div> -->
+	    </div>
+	    	<div class="qiqiu4 qiqiu">
+	    	<img src="img/20110122135s412367.png"/>
+	        <!-- <div class="text">小雪最棒</div> -->
+	    </div>
+	    	<div class="qiqiu5 qiqiu">
+	    	<img src="img/20110122135412367.png"/>
+	        <!-- <div class="text">小雪雪雪</div> -->
+	    </div>
+	<script src="https://pmicdn.oss-cn-beijing.aliyuncs.com/js/jquery.min.js"></script>
+	<script src='https://pmicdn.oss-cn-beijing.aliyuncs.com/js/public.js'></script>
+	<script src="js/jquery.beattext.js"></script>
+	<script src="js/easying.js"></script>
+	<script>
+		$(function(){  
+		    /*
+				*  参数详解:
+				*	upTime			上移的时间
+				*	downTime		下落的时间
+				*	beatHeight		上移高度
+				*	isAuth			是否自动
+				*	isRotate		是否旋转
+			*/
+			$('p#beatText').beatText({isAuth:false,isRotate:false});//鼠标移上去跳动
+			$('p#rotateText').beatText({isAuth:false,isRotate:true});//鼠标移上去旋转跳动
+			$('p#autoText').beatText({isAuth:true,beatHeight:"3em",isRotate:false});//自动跳动
+			$('p#roloadText').beatText({isAuth:true,beatHeight:"1em",isRotate:false,upTime:100,downTime:100});//自动快速跳动
+			$('p#autoRotateText').beatText({isAuth:true,upTime:700,downTime:700,beatHeight:"3em",isRotate:true});//自动旋转跳动
+			$('#todayTitle').beatText({isAuth:true,beatHeight:"3em",isRotate:true,upTime:300,downTime:300});
+			$('#todayTitle').beatText({isAuth:true,beatHeight:"2em",isRotate:true,upTime:300,downTime:300});
+			$('.textRotate').beatText({isAuth:true,beatHeight:"2em",isRotate:true,upTime:300,downTime:300});
+
+			$('.p2 img').click(function(event) {
+				$('.one').hide();
+				$(this).parent().parent().html('<p class="dc">都处在应该带娃过六一的年纪<br>自己是不是宝宝心里没点数嘛！</p><img class="five" src="img1/5.jpg">');
+				$('.dc').beatText({isAuth:true,beatHeight:"2em",isRotate:true,upTime:300,downTime:300});
+				$('.five').click(function(event) {
+					$(this).attr('src','img1/6.jpg')
+					$(this).removeClass('five').addClass('six')
+					$('.six').click(function(event) {
+						$(this).attr('src','img1/7.jpg')
+						$(this).removeClass('six').addClass('seven')
+						$('.seven').click(function(event) {
+							$(this).attr('src','img1/8.jpg')
+							$(this).removeClass('seven').addClass('eight')
+							$('.eight').click(function(event) {
+								$(this).parent().html('<p class="hl">好啦好啦 知道你是宝宝 祝宝宝六一快乐吖</p><img class="thirteen" src="img1/13.jpg">')
+								$('.thirteen').click(function(event) {
+									$(this).attr('src','img1/14.jpg')
+									$(this).removeClass('seven').addClass('fourteen')
+									$('.fourteen').click(function(event) {
+										$(this).parent().html('<p class="happiness">祝：所有想长大的小朋友 和<br>不想长大的大朋友 六一快乐~</p><img class="seventeen" src="img1/17.jpg">')
+										$('.happiness').beatText({isAuth:true,beatHeight:"2em",isRotate:true,upTime:300,downTime:300});
+										function toggleColor(){
+												setTimeout("$('.happiness').css('color,'#00FFFF')",100);
+												setTimeout("$('.happiness').css('color,'#191970')",100);
+												setTimeout("$('.happiness').css('color,'#FFD700 ')",100);
+												setTimeout("$('.happiness').css('color,'#FF4500 ')",100);
+												setTimeout("$('.happiness').css('color,'#800080 ')",100);
+												setTimeout("$('.happiness').css('color,'#FF1493 ')",100);
+												setTimeout("$('.happiness').css('color,'#ff0')",100);
+											}
+											setInterval(toggleColor,800);
+									})
+								})
+							})
+						})
+					})
+				});
+			});
+
+			$('.p3 img').click(function(event) {
+				$('.one').hide();
+				$(this).parent().parent().html('<img class="four" src="img1/4.jpg">');
+				$('.four').click(function(event) {
+					$(this).parent().html('<p class="bl">不论怎样，童心还是要的有的吖！</p><img class="nine" src="img1/9.jpg">')
+					$('.nine').click(function(event) {
+						$(this).attr('src','img1/10.jpg')
+						$(this).removeClass('nine').addClass('ten')
+						$('.ten').click(function(event) {
+							$(this).attr('src','img1/11.jpg')
+							$(this).removeClass('ten').addClass('eleven')
+							$('.eleven').click(function(event) {
+								$(this).attr('src','img1/12.jpg')
+								$(this).removeClass('eleven').addClass('twelve')
+								$('.twelve').click(function(event) {
+									$(this).parent().html('<p class="yy">永远年轻，永远热泪盈眶！</p><img class="fifteen" src="img1/15.jpg">')
+									$('.fifteen').click(function(event) {
+										$(this).attr('src','img1/16.jpg')
+										$(this).removeClass('fifteen').addClass('sixteen')
+										$('.sixteen').click(function(event) {
+											$(this).parent().html('<p class="happiness">祝：所有想长大的小朋友 和<br>不想长大的大朋友 六一快乐~</p><img class="seventeen" src="img1/17.jpg">')
+											function toggleColor(){
+												setTimeout("$('.happiness').css('color,'#00FFFF')",100);
+												setTimeout("$('.happiness').css('color,'#191970')",100);
+												setTimeout("$('.happiness').css('color,'#FFD700 ')",100);
+												setTimeout("$('.happiness').css('color,'#FF4500 ')",100);
+												setTimeout("$('.happiness').css('color,'#800080 ')",100);
+												setTimeout("$('.happiness').css('color,'#FF1493 ')",100);
+												setTimeout("$('.happiness').css('color,'#ff0')",100);
+											}
+											setInterval(toggleColor,800);
+										})
+									})
+								})
+							})
+						})
+					})
+				});
+			});
+
+
+		});
+	</script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120130951-2"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-120130951-2');
+	</script>
+
+</body>
+</html>
